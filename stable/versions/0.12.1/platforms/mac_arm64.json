@@ -4,14 +4,14 @@
     "dmg": {
       "contentType": "application/x-apple-diskimage",
       "name": "open-design-0.12.1-mac-arm64.dmg",
-      "size": 180232595,
+      "size": 180231570,
       "url": "https://github.com/ilous12/nn-design-release-feed/releases/download/v0.12.1/open-design-0.12.1-mac-arm64.dmg",
       "sha256Url": "https://github.com/ilous12/nn-design-release-feed/releases/download/v0.12.1/open-design-0.12.1-mac-arm64.dmg.sha256"
     },
     "zip": {
       "contentType": "application/zip",
       "name": "open-design-0.12.1-mac-arm64.zip",
-      "size": 182020283,
+      "size": 182020249,
       "url": "https://github.com/ilous12/nn-design-release-feed/releases/download/v0.12.1/open-design-0.12.1-mac-arm64.zip",
       "sha256Url": "https://github.com/ilous12/nn-design-release-feed/releases/download/v0.12.1/open-design-0.12.1-mac-arm64.zip.sha256"
     }
@@ -23,7 +23,7 @@
     "name": "latest-mac.yml",
     "url": "https://ilous12.github.io/nn-design-release-feed/stable/versions/0.12.1/latest-mac.yml"
   },
-  "generatedAt": "2026-07-13T05:04:10.611Z",
+  "generatedAt": "2026-07-13T05:24:04.323Z",
   "github": {
     "branch": "",
     "commit": "",
