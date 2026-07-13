@@ -150,6 +150,7 @@
         font-size: clamp(42px, 7vw, 72px);
         line-height: 1.05;
         letter-spacing: 0;
+        word-break: keep-all;
       }
 
       .gradient-text {
@@ -164,6 +165,7 @@
         margin: 24px auto 0;
         color: var(--muted);
         font-size: 20px;
+        word-break: keep-all;
       }
 
       .actions {
@@ -324,6 +326,35 @@
         font-weight: 900;
       }
 
+      .agent-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 12px;
+      }
+
+      .agent-chip {
+        border: 1px solid rgba(99, 102, 241, 0.18);
+        border-radius: 8px;
+        background: #ffffff;
+        color: var(--primary);
+        padding: 5px 8px;
+        font-size: 12px;
+        font-weight: 800;
+      }
+
+      .install-line {
+        max-width: 760px;
+        margin: 28px auto 0;
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        background: #ffffff;
+        color: var(--muted);
+        padding: 13px 16px;
+        font-size: 15px;
+        font-weight: 700;
+      }
+
       .section {
         padding: 72px 0;
       }
@@ -344,12 +375,14 @@
         font-size: clamp(30px, 4vw, 44px);
         line-height: 1.16;
         letter-spacing: 0;
+        word-break: keep-all;
       }
 
       .section-head p {
         margin: 14px 0 0;
         color: var(--muted);
         font-size: 18px;
+        word-break: keep-all;
       }
 
       .feature-grid {
@@ -395,6 +428,7 @@
         color: var(--text);
         font-size: 19px;
         line-height: 1.35;
+        word-break: keep-all;
       }
 
       .feature-card p,
@@ -403,6 +437,13 @@
         margin: 0;
         color: var(--muted);
         font-size: 15px;
+        word-break: keep-all;
+      }
+
+      .feature-card strong,
+      .install-card strong,
+      .guide-item strong {
+        color: var(--text);
       }
 
       code {
@@ -417,6 +458,12 @@
         display: grid;
         grid-template-columns: repeat(3, minmax(0, 1fr));
         gap: 24px;
+      }
+
+      .usage-layout {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 18px;
       }
 
       .install-card.emphasis {
@@ -489,12 +536,14 @@
 
       .guide-item h3 {
         margin: 0 0 8px;
+        word-break: keep-all;
       }
 
       .guide-item p {
         margin: 0;
         color: var(--muted);
         font-size: 15px;
+        word-break: keep-all;
       }
 
       .note {
@@ -560,12 +609,17 @@
           padding-top: 48px;
         }
 
+        h1 {
+          font-size: 39px;
+        }
+
         .chat-demo {
           margin-top: 36px;
         }
 
         .feature-grid,
         .install-layout,
+        .usage-layout,
         .guide-grid {
           grid-template-columns: 1fr;
         }
@@ -590,13 +644,14 @@
   </head>
   <body>
     <nav class="nav" aria-label="Design For AIR navigation">
-      <div class="nav-inner">
-        <a class="brand" href="#">
-          <span class="mark">AI</span>
-          <span>Design For AIR</span>
-        </a>
-        <div class="nav-links">
-          <a href="#features">기능</a>
+        <div class="nav-inner">
+          <a class="brand" href="#">
+            <span class="mark">AI</span>
+            <span>Design For AIR</span>
+          </a>
+          <div class="nav-links">
+          <a href="#features">컨셉</a>
+          <a href="#usage">활용</a>
           <a href="#install">설치</a>
           <a href="#guide">가이드</a>
           <a href="#feed">업데이트</a>
@@ -613,30 +668,39 @@
         <div class="container">
           <div class="pill">
             <svg class="bolt" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
-            사내 디자인 작업을 위한 AI 데스크톱 앱
+            Codex · Claude Code · Gemini CLI · Local Model
           </div>
-          <h1>Design For AIR로<br />디자인을 <span class="gradient-text">열고 리믹스하세요</span></h1>
-          <p class="summary">nn.design 배포판을 처음 쓰는 사람도 설치 후 프로젝트를 열고, 생성 결과를 리믹스하고, 팀 정책에 맞게 에이전트를 설정할 수 있습니다.</p>
+          <h1>사내 작업량을 감당하는<br /><span class="gradient-text">AI 디자인 실행 구조</span></h1>
+          <p class="summary">nn.design은 사내 API 키, BYOK, 허용된 CLI 에이전트와 로컬 모델을 연결해 디자인 초안, UI 생성, 코드 변환, 검토를 팀 정책 안에서 처리하는 내부 생산성 플랫폼입니다.</p>
           <div class="actions">
-            <a class="button primary" href="https://github.com/ilous12/nn-design-release-feed/releases/latest">Try Now - 최신 설치 파일</a>
-            <a class="button secondary" href="#guide">View Documentation</a>
+            <a class="button primary" href="https://github.com/ilous12/nn-design-release-feed/releases/latest">최신 DMG 받기</a>
+            <a class="button secondary" href="#usage">활용 방식 보기</a>
           </div>
+          <div class="install-line">설치: DMG를 받아 Applications로 드래그하면 바로 시작할 수 있습니다.</div>
 
           <div class="chat-demo" aria-label="Design For AIR chatbot style preview">
             <div class="chat-header">
               <div class="avatar">AI</div>
               <div>
-                <div class="chat-title">Design For AIR Assistant</div>
-                <div class="status">Online</div>
+                <div class="chat-title">nn.design Assistant</div>
+                <div class="status">Internal workspace ready</div>
               </div>
             </div>
             <div class="chat-body">
               <div class="message user">
-                <div class="bubble">사내 관리자 화면을 모바일 우선으로 리믹스해줘.</div>
+                <div class="bubble">Build me a Notion-style team dashboard.</div>
               </div>
               <div class="message assistant">
                 <div class="avatar">AI</div>
-                <div class="bubble">프로젝트를 열고 기존 디자인 맥락을 확인한 뒤, 목적과 플랫폼에 맞춰 화면 구조를 다시 제안하겠습니다.</div>
+                <div class="bubble">
+                  사내 디자인 시스템을 기준으로 화면 구조를 만들고, 목적에 맞는 CLI 에이전트를 나눠 실행합니다.
+                  <div class="agent-row">
+                    <span class="agent-chip">Codex: code</span>
+                    <span class="agent-chip">Claude Code: UX draft</span>
+                    <span class="agent-chip">Gemini CLI: review</span>
+                    <span class="agent-chip">Local: private context</span>
+                  </div>
+                </div>
               </div>
               <div class="message assistant">
                 <div class="avatar" style="opacity:.5">AI</div>
@@ -644,7 +708,7 @@
               </div>
             </div>
             <div class="composer">
-              <div class="input">Type your design request...</div>
+              <div class="input">Open a project, choose an agent, review the result...</div>
               <div class="send">→</div>
             </div>
           </div>
@@ -654,60 +718,90 @@
       <section id="features" class="section white-section">
         <div class="container">
           <div class="section-head">
-            <h2>Built for <span class="gradient-text">Design Developers</span></h2>
-            <p>설치, 열기, 리믹스, 설정을 하나의 시작 흐름으로 묶었습니다.</p>
+            <h2>Claude Design의 한계를<br /><span class="gradient-text">사내 운영 구조로 바꾸기</span></h2>
+            <p>nn.design은 AI가 화면을 대신 그리는 도구가 아니라, 팀이 감당해야 하는 작업량과 보안 기준을 현실적으로 운영하기 위한 디자인 자동화 환경입니다.</p>
           </div>
           <div class="feature-grid">
             <article class="feature-card">
-              <div class="icon-box">⌘</div>
-              <h3>프로젝트 열기</h3>
-              <p>작업 폴더나 사내 템플릿을 열어 디자인 맥락을 바로 연결합니다.</p>
+              <div class="icon-box">01</div>
+              <h3>사용량 한계를 실행 구조로 전환</h3>
+              <p>사내 API 키, BYOK, 로컬 모델, 허용된 CLI 에이전트를 선택적으로 연결해 팀 단위 작업량을 안정적으로 분산합니다.</p>
             </article>
             <article class="feature-card">
-              <div class="icon-box">↻</div>
-              <h3>디자인 리믹스</h3>
-              <p>목적, 사용자, 플랫폼을 바꿔 같은 결과를 여러 방향으로 재구성합니다.</p>
+              <div class="icon-box">02</div>
+              <h3>목적별 에이전트 선택</h3>
+              <p>기획 초안은 Claude Code, 코드 변환은 Codex, 검토는 Gemini CLI처럼 업무 목적과 비용 기준에 맞춰 모델을 고릅니다.</p>
             </article>
             <article class="feature-card">
-              <div class="icon-box">⚙</div>
-              <h3>팀 설정</h3>
-              <p>AI 에이전트, API 키, 언어, 디자인 시스템을 조직 정책에 맞춥니다.</p>
+              <div class="icon-box">03</div>
+              <h3>로컬 퍼스트 데이터 통제</h3>
+              <p>디자인 파일, 프롬프트, 산출물, 프로젝트 컨텍스트를 로컬 또는 사내 승인 경로에서 다뤄 민감 정보 노출을 줄입니다.</p>
+            </article>
+            <article class="feature-card">
+              <div class="icon-box">04</div>
+              <h3>회사 맞춤 디자인/업무 시스템</h3>
+              <p>Open.design의 범용 시스템을 그대로 쓰지 않고 사내 서비스 UI, 브랜드 톤, 컴포넌트 규칙, 개발팀 산출물 형식에 맞게 정제합니다.</p>
+            </article>
+            <article class="feature-card">
+              <div class="icon-box">05</div>
+              <h3>검증 가능한 내부 생산성 플랫폼</h3>
+              <p>생성 결과를 검토, 수정, 재사용하고 에이전트 권한, 로그, 품질 기준을 관리해 실험 도구를 운영 플랫폼으로 바꿉니다.</p>
+            </article>
+            <article class="feature-card">
+              <div class="icon-box">₩</div>
+              <h3>팀 비용 절감 흐름</h3>
+              <p>작업마다 원하는 CLI와 모델을 선택해 외부 SaaS 한도와 고정 비용 의존도를 낮추고, 사내에 이미 허용된 실행 경로를 재사용합니다.</p>
             </article>
           </div>
         </div>
       </section>
 
-      <section id="install" class="section">
+      <section id="usage" class="section">
         <div class="container">
           <div class="section-head">
-            <h2>Start in <span class="gradient-text">three steps</span></h2>
-            <p>초심자도 그대로 따라갈 수 있는 설치 흐름입니다.</p>
+            <h2>활용은 하나가 아니라<br /><span class="gradient-text">업무 목적별로 나뉩니다</span></h2>
+            <p>초안 생성, 리믹스, 코드 변환, 리뷰, 재사용까지 같은 프로젝트 컨텍스트 안에서 이어가되 실행 모델은 팀 정책에 맞춰 바꿀 수 있습니다.</p>
           </div>
-          <div class="install-layout">
+          <div class="usage-layout">
             <article class="install-card">
-              <div class="icon-box">1</div>
-              <h3>파일 선택</h3>
-              <p>macOS 사용자는 최신 릴리스에서 <code>.dmg</code> 파일을 받습니다. payload는 업데이트 과정에서 앱이 자동으로 사용합니다.</p>
-            </article>
-            <article class="install-card emphasis">
-              <div class="icon-box">2</div>
-              <h3>앱 설치</h3>
-              <p>DMG를 열고 <strong>Design For AIR</strong>를 Applications 폴더로 이동합니다. 기존 버전은 종료 후 교체합니다.</p>
+              <div class="icon-box">열기</div>
+              <h3>프로젝트 컨텍스트 연결</h3>
+              <p>작업 폴더, 사내 템플릿, 디자인 시스템 기준을 먼저 열어 AI가 회사 맥락 안에서 답하게 만듭니다.</p>
             </article>
             <article class="install-card">
-              <div class="icon-box">3</div>
-              <h3>첫 실행</h3>
-              <p>보안 확인이 나오면 배포 출처를 확인한 뒤 실행하고, 설정 화면에서 언어와 에이전트 상태를 점검합니다.</p>
+              <div class="icon-box">선택</div>
+              <h3>목적에 맞는 CLI 지정</h3>
+              <p><strong>Codex</strong>, <strong>Claude Code</strong>, <strong>Gemini CLI</strong>, 로컬 모델 중 작업 성격과 비용 기준에 맞는 실행 경로를 선택합니다.</p>
+            </article>
+            <article class="install-card">
+              <div class="icon-box">리믹스</div>
+              <h3>결과를 업무 형식으로 재구성</h3>
+              <p>관리자 화면, 모바일 우선, AIR 톤, 개발 전달용 스펙처럼 같은 요구를 여러 산출물 형태로 다시 만듭니다.</p>
+            </article>
+            <article class="install-card">
+              <div class="icon-box">검토</div>
+              <h3>로그와 품질 기준으로 확인</h3>
+              <p>생성물은 그대로 끝내지 않고 검토, 수정, 재사용 이력을 남겨 내부 생산성 플랫폼으로 운영합니다.</p>
             </article>
           </div>
         </div>
       </section>
 
-      <section id="guide" class="section white-section">
+      <section id="install" class="section white-section">
         <div class="container">
           <div class="section-head">
-            <h2>Guide for <span class="gradient-text">open and remix</span></h2>
-            <p>설치 후에는 열기, 리믹스, 설정 순서로 작업 기준을 잡습니다.</p>
+            <h2>설치는 가볍게,<br /><span class="gradient-text">운영은 팀 기준대로</span></h2>
+            <p>macOS 사용자는 DMG를 설치하고, 이후 설정에서 허용된 에이전트와 키 관리 방식을 맞추면 됩니다.</p>
+          </div>
+          <div class="install-line">설치: 최신 릴리스의 <code>.dmg</code>를 열고 <strong>Design For AIR</strong>를 Applications로 드래그하세요.</div>
+        </div>
+      </section>
+
+      <section id="guide" class="section">
+        <div class="container">
+          <div class="section-head">
+            <h2>처음 쓰는 사람도<br /><span class="gradient-text">이 순서로 시작합니다</span></h2>
+            <p>설치 설명은 줄이고, 실제 활용 단계에서 무엇을 선택해야 하는지에 집중했습니다.</p>
           </div>
           <section class="guide-tabs" aria-label="Design For AIR guide tabs">
             <input id="tab-install" name="guide-tab" type="radio" checked />
@@ -720,16 +814,16 @@
               <section id="install-panel" class="tab-panel" role="tabpanel" aria-labelledby="tab-install">
                 <div class="guide-grid">
                   <article class="guide-item">
-                    <h3>DMG 기준 배포</h3>
-                    <p>사용자 설치는 DMG를 기준으로 안내합니다.</p>
+                    <h3>DMG 설치</h3>
+                    <p>최신 릴리스에서 DMG를 받고 Applications로 옮기면 사용자 설치는 끝납니다.</p>
                   </article>
                   <article class="guide-item">
-                    <h3>Payload 업데이트</h3>
-                    <p>런처 payload는 자동 업데이트용 artifact로 함께 배포합니다.</p>
+                    <h3>업데이트</h3>
+                    <p>앱은 feed의 metadata와 macOS manifest를 확인해 새 버전과 payload를 찾습니다.</p>
                   </article>
                   <article class="guide-item">
-                    <h3>버전 검증</h3>
-                    <p>앱 버전이 릴리스 태그보다 낮을 때 업데이트가 감지됩니다.</p>
+                    <h3>검증</h3>
+                    <p>업로드된 DMG, payload, SHA-256 체크섬으로 배포 파일을 확인할 수 있습니다.</p>
                   </article>
                 </div>
                 <div class="note">같은 버전의 앱과 feed를 비교하면 최신 상태로 표시됩니다.</div>
@@ -738,15 +832,15 @@
                 <div class="guide-grid">
                   <article class="guide-item">
                     <h3>열기</h3>
-                    <p>작업할 프로젝트 폴더나 사내 템플릿 폴더를 엽니다.</p>
+                    <p>작업할 프로젝트 폴더, 디자인 시스템, 사내 템플릿을 열어 컨텍스트를 고정합니다.</p>
                   </article>
                   <article class="guide-item">
                     <h3>리믹스</h3>
-                    <p>관리자 화면, 모바일 우선, 사내 서비스 톤처럼 목적을 바꿔 다시 요청합니다.</p>
+                    <p>생성된 화면을 AIR 서비스 톤, 모바일 우선, 관리자 업무 흐름, 개발 전달물 기준으로 다시 요청합니다.</p>
                   </article>
                   <article class="guide-item">
                     <h3>설정</h3>
-                    <p>허용된 에이전트, API 키, 언어, 디자인 시스템을 조직 정책에 맞춥니다.</p>
+                    <p>Codex, Claude Code, Gemini CLI, 로컬 모델, BYOK, 사내 API 키를 보안 정책과 비용 기준에 맞춥니다.</p>
                   </article>
                 </div>
               </section>
@@ -764,11 +858,11 @@
         </div>
       </section>
 
-      <section class="section">
+      <section class="section white-section">
         <div class="container">
           <div class="cta-band">
-            <h2>Design For AIR를 바로 설치하세요</h2>
-            <p>사내 디자인 작업을 열고, 리믹스하고, 설정하는 흐름을 하나의 데스크톱 앱에서 시작합니다.</p>
+            <h2>팀의 AI 디자인 실행 구조로 운영하세요</h2>
+            <p>원하는 CLI와 모델을 고르고, 사내 데이터 통제와 디자인 시스템 기준 안에서 더 많은 작업량을 낮은 비용으로 처리합니다.</p>
             <a class="button" href="https://github.com/ilous12/nn-design-release-feed/releases/latest">최신 릴리스 보기</a>
           </div>
         </div>
