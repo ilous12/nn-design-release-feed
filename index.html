@@ -4,385 +4,461 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Design For AIR 시작 가이드</title>
-    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23b8f06f'/%3E%3Cpath d='M17 44 29 18h6l12 26h-7l-2-5H26l-2 5h-7Zm11-11h8l-4-10-4 10Z' fill='%23090b0f'/%3E%3C/svg%3E" />
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='8' x2='56' y1='8' y2='56'%3E%3Cstop stop-color='%236366f1'/%3E%3Cstop offset='1' stop-color='%238b5cf6'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='16' fill='url(%23g)'/%3E%3Cpath d='M17 44 29 18h6l12 26h-7l-2-5H26l-2 5h-7Zm11-11h8l-4-10-4 10Z' fill='white'/%3E%3C/svg%3E" />
     <style>
       :root {
-        color-scheme: dark;
-        --bg: #090b0f;
-        --surface: #11151d;
-        --surface-2: #171c25;
-        --surface-3: #f7f8f5;
-        --text: #f5f7f2;
-        --text-dark: #151812;
-        --muted: #a7aea4;
-        --muted-dark: #5d655c;
-        --line: rgba(255, 255, 255, 0.12);
-        --line-dark: #dfe3dc;
-        --accent: #b8f06f;
-        --accent-2: #53d3a2;
-        --accent-dark: #315b1f;
-        --shadow: 0 24px 70px rgba(0, 0, 0, 0.38);
+        color-scheme: light;
+        --bg: #f5f5f5;
+        --surface: #ffffff;
+        --surface-soft: #f8fafc;
+        --text: #111827;
+        --muted: #6b7280;
+        --border: #e5e7eb;
+        --primary: #6366f1;
+        --primary-2: #8b5cf6;
+        --secondary: #10b981;
+        --shadow: 0 20px 45px rgba(17, 24, 39, 0.12);
       }
 
       * { box-sizing: border-box; }
-
-      html {
-        scroll-behavior: smooth;
-      }
+      html { scroll-behavior: smooth; }
 
       body {
         margin: 0;
-        background:
-          radial-gradient(circle at 20% 0%, rgba(83, 211, 162, 0.18), transparent 30%),
-          linear-gradient(180deg, #090b0f 0%, #0c1016 44%, #f7f8f5 44%, #f7f8f5 100%);
+        background: var(--bg);
         color: var(--text);
         font-family: "Pretendard", -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
-        line-height: 1.55;
+        line-height: 1.6;
       }
 
-      main {
-        width: min(1180px, calc(100% - 40px));
-        margin: 0 auto;
-        padding: 0 0 72px;
+      a {
+        color: inherit;
+        text-decoration: none;
       }
 
       .nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 20;
+        border-bottom: 1px solid rgba(229, 231, 235, 0.8);
+        background: rgba(245, 245, 245, 0.82);
+        backdrop-filter: blur(14px);
+      }
+
+      .nav-inner {
         display: flex;
         align-items: center;
         justify-content: space-between;
-        height: 72px;
+        width: min(1152px, calc(100% - 32px));
+        height: 64px;
+        margin: 0 auto;
       }
 
       .brand {
         display: inline-flex;
         align-items: center;
-        gap: 10px;
+        gap: 9px;
         color: var(--text);
-        font-weight: 760;
+        font-size: 18px;
+        font-weight: 800;
       }
 
       .mark {
         display: grid;
         place-items: center;
-        width: 34px;
-        height: 34px;
-        border: 1px solid rgba(255, 255, 255, 0.16);
-        border-radius: 9px;
-        background: #f5f7f2;
-        color: #11151d;
+        width: 32px;
+        height: 32px;
+        border-radius: 10px;
+        background: linear-gradient(135deg, var(--primary), var(--primary-2));
+        color: #ffffff;
         font-size: 13px;
-        font-weight: 820;
+        font-weight: 900;
       }
 
       .nav-links {
         display: flex;
         align-items: center;
-        gap: 22px;
+        gap: 32px;
       }
 
       .nav-links a {
-        color: rgba(245, 247, 242, 0.72);
+        color: var(--muted);
         font-size: 14px;
-        font-weight: 640;
+        font-weight: 600;
       }
 
       .nav-links a:hover {
         color: var(--text);
-        text-decoration: none;
+      }
+
+      .nav-actions {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .nav-actions a {
+        color: var(--muted);
+        font-size: 14px;
+        font-weight: 700;
+      }
+
+      .nav-actions .small-primary {
+        border-radius: 10px;
+        background: linear-gradient(135deg, var(--primary), var(--primary-2));
+        color: #ffffff;
+        padding: 9px 15px;
+      }
+
+      main {
+        padding-top: 64px;
+      }
+
+      .container {
+        width: min(1152px, calc(100% - 32px));
+        margin: 0 auto;
       }
 
       .hero {
-        display: grid;
-        grid-template-columns: minmax(0, 1.02fr) minmax(360px, 0.98fr);
-        gap: 46px;
+        padding: 72px 0 64px;
+        text-align: center;
+      }
+
+      .pill {
+        display: inline-flex;
         align-items: center;
-        min-height: 560px;
-        padding: 52px 0 72px;
+        gap: 8px;
+        border-radius: 999px;
+        background: rgba(99, 102, 241, 0.1);
+        color: var(--primary);
+        padding: 7px 13px;
+        font-size: 14px;
+        font-weight: 800;
+      }
+
+      .bolt {
+        width: 16px;
+        height: 16px;
       }
 
       h1 {
-        margin: 0;
-        max-width: 720px;
-        font-size: clamp(42px, 7vw, 76px);
-        line-height: 0.98;
-        letter-spacing: 0;
-      }
-
-      h2 {
-        margin: 0;
-        font-size: 28px;
-        line-height: 1.2;
-        letter-spacing: 0;
-      }
-
-      h3 {
-        margin: 0;
-        font-size: 17px;
-        line-height: 1.35;
-        letter-spacing: 0;
-      }
-
-      p {
-        margin: 0;
-        color: inherit;
-      }
-
-      a {
-        color: var(--accent);
-        font-weight: 700;
-        text-decoration: none;
-      }
-
-      a:hover {
-        color: #d4ff9d;
-        text-decoration: underline;
-      }
-
-      code {
-        border: 1px solid rgba(255, 255, 255, 0.14);
-        border-radius: 6px;
-        background: rgba(255, 255, 255, 0.07);
-        padding: 2px 6px;
+        max-width: 840px;
+        margin: 24px auto 0;
         color: var(--text);
-        font-size: 0.92em;
+        font-size: clamp(42px, 7vw, 72px);
+        line-height: 1.05;
+        letter-spacing: 0;
+      }
+
+      .gradient-text {
+        background: linear-gradient(135deg, var(--primary), var(--primary-2));
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
       }
 
       .summary {
-        max-width: 620px;
-        margin-top: 22px;
-        color: rgba(245, 247, 242, 0.74);
-        font-size: 19px;
-      }
-
-      .accent {
-        color: var(--accent);
+        max-width: 680px;
+        margin: 24px auto 0;
+        color: var(--muted);
+        font-size: 20px;
       }
 
       .actions {
         display: flex;
+        justify-content: center;
         flex-wrap: wrap;
-        gap: 12px;
+        gap: 16px;
         margin-top: 32px;
       }
 
       .button {
-        display: flex;
+        display: inline-flex;
         align-items: center;
         justify-content: center;
-        min-height: 48px;
-        border: 1px solid rgba(255, 255, 255, 0.18);
-        border-radius: 10px;
-        padding: 0 18px;
-        background: transparent;
-        color: var(--text);
-        font-weight: 760;
-      }
-
-      .button:hover {
-        border-color: rgba(255, 255, 255, 0.34);
-        color: var(--text);
-        text-decoration: none;
+        min-height: 50px;
+        border-radius: 12px;
+        padding: 0 22px;
+        font-size: 16px;
+        font-weight: 800;
       }
 
       .button.primary {
-        border-color: var(--accent);
-        background: var(--accent);
-        color: #10140c;
+        background: linear-gradient(135deg, var(--primary), var(--primary-2));
+        color: #ffffff;
+        box-shadow: 0 12px 24px rgba(99, 102, 241, 0.24);
       }
 
-      .button.primary:hover {
-        color: #10140c;
+      .button.secondary {
+        border: 1px solid var(--border);
+        background: #ffffff;
+        color: var(--text);
       }
 
-      .preview {
-        border: 1px solid rgba(255, 255, 255, 0.12);
+      .chat-demo {
+        max-width: 768px;
+        margin: 48px auto 0;
+        border: 1px solid var(--border);
         border-radius: 18px;
-        background: linear-gradient(180deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+        background: #ffffff;
         box-shadow: var(--shadow);
         overflow: hidden;
+        text-align: left;
       }
 
-      .preview-top {
+      .chat-header {
         display: flex;
         align-items: center;
-        justify-content: space-between;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        padding: 15px 16px;
-      }
-
-      .window-dots {
-        display: flex;
-        gap: 7px;
-      }
-
-      .window-dots span {
-        width: 9px;
-        height: 9px;
-        border-radius: 50%;
-        background: rgba(255, 255, 255, 0.34);
-      }
-
-      .preview-title {
-        color: rgba(245, 247, 242, 0.7);
-        font-size: 13px;
-        font-weight: 650;
-      }
-
-      .preview-body {
-        display: grid;
-        gap: 14px;
-        padding: 18px;
-      }
-
-      .prompt {
-        margin-left: auto;
-        max-width: 76%;
-        border-radius: 16px 16px 4px 16px;
-        background: var(--accent);
-        color: #11150c;
-        padding: 13px 15px;
-        font-size: 14px;
-        font-weight: 650;
-      }
-
-      .response {
-        display: grid;
         gap: 12px;
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        border-radius: 16px;
-        background: rgba(17, 21, 29, 0.92);
-        padding: 16px;
+        border-bottom: 1px solid var(--border);
+        padding: 18px 24px;
       }
 
-      .response strong {
+      .avatar {
+        display: grid;
+        place-items: center;
+        width: 40px;
+        height: 40px;
+        border-radius: 999px;
+        background: linear-gradient(135deg, var(--primary), var(--primary-2));
+        color: #ffffff;
+        font-weight: 900;
+      }
+
+      .chat-title {
         color: var(--text);
-        font-size: 15px;
+        font-weight: 800;
       }
 
-      .response p {
-        color: rgba(245, 247, 242, 0.68);
+      .status {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        color: var(--secondary);
+        font-size: 12px;
+        font-weight: 700;
+      }
+
+      .status::before {
+        content: "";
+        width: 8px;
+        height: 8px;
+        border-radius: 999px;
+        background: var(--secondary);
+      }
+
+      .chat-body {
+        display: grid;
+        gap: 18px;
+        padding: 24px;
+      }
+
+      .message {
+        display: flex;
+        gap: 12px;
+      }
+
+      .message.user {
+        justify-content: flex-end;
+      }
+
+      .bubble {
+        max-width: 80%;
+        border-radius: 18px;
+        padding: 13px 16px;
         font-size: 14px;
       }
 
-      .mini-grid {
-        display: grid;
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 8px;
+      .user .bubble {
+        border-bottom-right-radius: 5px;
+        background: var(--primary);
+        color: #ffffff;
       }
 
-      .mini-card {
-        min-height: 68px;
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        border-radius: 10px;
-        background: rgba(255, 255, 255, 0.06);
-        padding: 10px;
-      }
-
-      .mini-card b {
-        display: block;
+      .assistant .bubble {
+        border-bottom-left-radius: 5px;
+        background: var(--bg);
         color: var(--text);
-        font-size: 12px;
       }
 
-      .mini-card span {
-        display: block;
-        margin-top: 5px;
-        color: rgba(245, 247, 242, 0.52);
-        font-size: 12px;
+      .typing {
+        display: flex;
+        gap: 5px;
+      }
+
+      .typing span {
+        width: 8px;
+        height: 8px;
+        border-radius: 999px;
+        background: #9ca3af;
       }
 
       .composer {
         display: flex;
-        color: var(--text);
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        border-radius: 12px;
-        background: rgba(255, 255, 255, 0.06);
-        padding: 12px;
+        align-items: center;
+        gap: 12px;
+        border-top: 1px solid var(--border);
+        padding: 16px 24px;
       }
 
-      .composer span {
-        color: rgba(245, 247, 242, 0.52);
-        font-size: 13px;
-      }
-
-      .content {
-        color: var(--text-dark);
-      }
-
-      .content-shell {
-        display: grid;
-        grid-template-columns: 260px minmax(0, 1fr);
-        gap: 28px;
-        align-items: start;
-      }
-
-      .side-note {
-        position: sticky;
-        top: 24px;
-        border: 1px solid var(--line-dark);
+      .input {
+        flex: 1;
+        border: 1px solid var(--border);
         border-radius: 14px;
-        background: #ffffff;
-        padding: 20px;
-      }
-
-      .side-note h2 {
-        color: var(--text-dark);
-        font-size: 19px;
-      }
-
-      .side-note p {
-        margin-top: 10px;
-        color: var(--muted-dark);
+        background: var(--bg);
+        color: var(--muted);
+        padding: 13px 16px;
         font-size: 14px;
       }
 
-      .feed-links {
+      .send {
         display: grid;
-        gap: 9px;
-        margin-top: 18px;
+        place-items: center;
+        width: 42px;
+        height: 42px;
+        border-radius: 14px;
+        background: linear-gradient(135deg, var(--primary), var(--primary-2));
+        color: #ffffff;
+        font-weight: 900;
       }
 
-      .feed-links a {
-        display: block;
-        border-top: 1px solid var(--line-dark);
-        padding-top: 9px;
-        color: var(--accent-dark);
-        font-size: 14px;
+      .section {
+        padding: 72px 0;
       }
 
-      .tabs {
-        border: 1px solid var(--line-dark);
-        border-radius: 16px;
+      .white-section {
+        background: #ffffff;
+      }
+
+      .section-head {
+        max-width: 720px;
+        margin: 0 auto 42px;
+        text-align: center;
+      }
+
+      .section-head h2 {
+        margin: 0;
+        color: var(--text);
+        font-size: clamp(30px, 4vw, 44px);
+        line-height: 1.16;
+        letter-spacing: 0;
+      }
+
+      .section-head p {
+        margin: 14px 0 0;
+        color: var(--muted);
+        font-size: 18px;
+      }
+
+      .feature-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 24px;
+      }
+
+      .feature-card,
+      .install-card,
+      .feed-card {
+        border: 1px solid var(--border);
+        border-radius: 18px;
+        background: #ffffff;
+        padding: 24px;
+      }
+
+      .feature-card {
+        cursor: default;
+        transition: border-color 160ms ease, box-shadow 160ms ease;
+      }
+
+      .feature-card:hover {
+        border-color: rgba(99, 102, 241, 0.35);
+        box-shadow: 0 12px 26px rgba(17, 24, 39, 0.08);
+      }
+
+      .icon-box {
+        display: grid;
+        place-items: center;
+        width: 48px;
+        height: 48px;
+        border-radius: 14px;
+        background: rgba(99, 102, 241, 0.1);
+        color: var(--primary);
+        font-size: 22px;
+      }
+
+      .feature-card h3,
+      .install-card h3,
+      .feed-card h3 {
+        margin: 18px 0 8px;
+        color: var(--text);
+        font-size: 19px;
+        line-height: 1.35;
+      }
+
+      .feature-card p,
+      .install-card p,
+      .feed-card p {
+        margin: 0;
+        color: var(--muted);
+        font-size: 15px;
+      }
+
+      code {
+        border-radius: 5px;
+        background: #eef2ff;
+        color: var(--primary);
+        padding: 2px 6px;
+        font-size: 0.92em;
+      }
+
+      .install-layout {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 24px;
+      }
+
+      .install-card.emphasis {
+        position: relative;
+        border-color: var(--primary);
+        box-shadow: 0 18px 36px rgba(99, 102, 241, 0.15);
+      }
+
+      .guide-tabs {
+        max-width: 896px;
+        margin: 0 auto;
+        border: 1px solid var(--border);
+        border-radius: 18px;
         background: #ffffff;
         overflow: hidden;
       }
 
-      .tabs input {
+      .guide-tabs input {
         position: absolute;
         opacity: 0;
         pointer-events: none;
       }
 
       .tab-list {
-        display: flex;
-        border-bottom: 1px solid var(--line-dark);
-        background: #fafbf8;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        border-bottom: 1px solid var(--border);
+        background: var(--surface-soft);
       }
 
       .tab-list label {
         cursor: pointer;
-        border-right: 1px solid var(--line-dark);
-        border-bottom: 2px solid transparent;
-        padding: 16px 22px 14px;
-        color: var(--muted-dark);
-        font-weight: 760;
+        padding: 16px;
+        color: var(--muted);
+        text-align: center;
+        font-weight: 800;
       }
 
       #tab-install:checked ~ .tab-list label[for="tab-install"],
       #tab-guide:checked ~ .tab-list label[for="tab-guide"] {
-        border-bottom-color: #151812;
-        color: var(--text-dark);
         background: #ffffff;
+        color: var(--primary);
       }
 
       .tab-panel {
@@ -395,271 +471,305 @@
       }
 
       .panels {
-        padding: 24px;
+        padding: 28px;
       }
 
-      .grid {
+      .guide-grid {
         display: grid;
         grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 12px;
+        gap: 16px;
       }
 
-      .card {
-        border: 1px solid var(--line-dark);
+      .guide-item {
+        border: 1px solid var(--border);
         border-radius: 12px;
-        background: #fbfcf9;
+        background: var(--surface-soft);
         padding: 18px;
       }
 
-      .card h2,
-      .step h2,
-      .feed h2 {
-        color: var(--text-dark);
-        font-size: 20px;
+      .guide-item h3 {
+        margin: 0 0 8px;
       }
 
-      .card p,
-      .step p,
-      .feed p {
-        margin-top: 9px;
-        color: var(--muted-dark);
+      .guide-item p {
+        margin: 0;
+        color: var(--muted);
         font-size: 15px;
       }
 
-      .card code {
-        border-color: var(--line-dark);
-        background: #f1f3ee;
-        color: var(--text-dark);
-      }
-
-      .card p + p {
-        margin-top: 10px;
-      }
-
-      .steps {
-        display: grid;
-        gap: 12px;
-      }
-
-      .step {
-        display: grid;
-        grid-template-columns: 38px 1fr;
-        gap: 16px;
-        border: 1px solid var(--line-dark);
-        border-radius: 12px;
-        background: #fbfcf9;
-        padding: 18px;
-      }
-
-      .step-number {
-        display: grid;
-        place-items: center;
-        width: 32px;
-        height: 32px;
-        border-radius: 9px;
-        background: #151812;
-        color: var(--accent);
-        font-weight: 750;
-      }
-
       .note {
-        border: 1px solid #d8decf;
+        margin-top: 20px;
         border-radius: 12px;
-        background: #f6f8f0;
-        color: #526044;
+        background: #eef2ff;
+        color: #4338ca;
         padding: 14px 16px;
-        margin-top: 18px;
         font-size: 14px;
+        font-weight: 700;
       }
 
-      .feed {
-        margin-top: 18px;
-        border: 1px solid var(--line-dark);
-        border-radius: 16px;
-        background: #ffffff;
-        padding: 22px 24px;
+      .feed-card {
+        max-width: 896px;
+        margin: 24px auto 0;
       }
 
-      .feed ul {
+      .feed-links {
         display: grid;
         gap: 8px;
-        margin: 10px 0 0;
-        padding-left: 18px;
+        margin-top: 16px;
       }
 
-      .feed a {
-        color: var(--accent-dark);
+      .feed-links a {
+        color: var(--primary);
+        font-weight: 800;
       }
 
-      @media (max-width: 820px) {
-        main {
-          width: min(100% - 28px, 1080px);
-        }
+      .cta-band {
+        border-radius: 24px;
+        background: linear-gradient(135deg, var(--primary), var(--primary-2));
+        color: #ffffff;
+        padding: 56px 24px;
+        text-align: center;
+      }
 
-        .nav {
-          height: 64px;
-        }
+      .cta-band h2 {
+        margin: 0;
+        font-size: clamp(30px, 5vw, 48px);
+        line-height: 1.15;
+      }
 
-        .nav-links {
+      .cta-band p {
+        max-width: 620px;
+        margin: 16px auto 0;
+        color: rgba(255, 255, 255, 0.82);
+        font-size: 18px;
+      }
+
+      .cta-band .button {
+        margin-top: 28px;
+        background: #ffffff;
+        color: var(--primary);
+      }
+
+      @media (max-width: 860px) {
+        .nav-links,
+        .nav-actions a:first-child {
           display: none;
         }
 
         .hero {
-          grid-template-columns: 1fr;
-          gap: 28px;
-          min-height: auto;
-          padding: 36px 0 52px;
+          padding-top: 48px;
         }
 
-        .preview {
-          border-radius: 14px;
+        .chat-demo {
+          margin-top: 36px;
         }
 
-        .mini-grid {
-          grid-template-columns: 1fr;
-        }
-
-        .content-shell {
+        .feature-grid,
+        .install-layout,
+        .guide-grid {
           grid-template-columns: 1fr;
         }
 
-        .side-note {
-          position: static;
+        .section {
+          padding: 54px 0;
         }
 
-        .grid {
-          grid-template-columns: 1fr;
+        .composer {
+          padding: 14px;
         }
 
-        .tab-list label {
-          flex: 1;
-          text-align: center;
+        .bubble {
+          max-width: 88%;
         }
 
-        .step {
-          grid-template-columns: 1fr;
+        .container {
+          width: min(100% - 28px, 1152px);
         }
       }
     </style>
   </head>
   <body>
-    <main>
-      <nav class="nav" aria-label="Design For AIR navigation">
+    <nav class="nav" aria-label="Design For AIR navigation">
+      <div class="nav-inner">
         <a class="brand" href="#">
-          <span class="mark">AIR</span>
+          <span class="mark">AI</span>
           <span>Design For AIR</span>
         </a>
         <div class="nav-links">
+          <a href="#features">기능</a>
           <a href="#install">설치</a>
           <a href="#guide">가이드</a>
           <a href="#feed">업데이트</a>
         </div>
-      </nav>
-
-      <section class="hero">
-        <div>
-          <h1>사내 디자인 작업을<br />AI와 함께 <span class="accent">열고 리믹스</span>합니다.</h1>
-          <p class="summary">Design For AIR는 nn.design 배포판의 데스크톱 앱입니다. 처음 사용하는 사람도 설치 후 프로젝트를 열고, 화면을 리믹스하고, 팀 정책에 맞게 에이전트를 설정할 수 있도록 구성했습니다.</p>
-          <div class="actions">
-            <a class="button primary" href="https://github.com/ilous12/nn-design-release-feed/releases/latest">최신 설치 파일</a>
-            <a class="button" href="https://github.com/ilous12/nn-design-release-feed/releases">전체 릴리스</a>
-          </div>
+        <div class="nav-actions">
+          <a href="https://github.com/ilous12/nn-design-release-feed/releases">릴리스</a>
+          <a class="small-primary" href="https://github.com/ilous12/nn-design-release-feed/releases/latest">받기</a>
         </div>
+      </div>
+    </nav>
 
-        <aside class="preview" aria-label="Design For AIR preview">
-          <div class="preview-top">
-            <div class="window-dots" aria-hidden="true"><span></span><span></span><span></span></div>
-            <div class="preview-title">Design For AIR session</div>
+    <main>
+      <section class="hero">
+        <div class="container">
+          <div class="pill">
+            <svg class="bolt" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+            사내 디자인 작업을 위한 AI 데스크톱 앱
           </div>
-          <div class="preview-body">
-            <div class="prompt">사내 관리자 화면을 모바일 우선으로 리믹스해줘.</div>
-            <div class="response">
-              <strong>리믹스 방향을 정리했습니다.</strong>
-              <p>기존 화면을 유지하면서 정보 우선순위, 버튼 밀도, 접근성 기준을 사내 디자인 시스템에 맞춰 재구성합니다.</p>
-              <div class="mini-grid">
-                <div class="mini-card"><b>열기</b><span>프로젝트 폴더 연결</span></div>
-                <div class="mini-card"><b>리믹스</b><span>목적과 플랫폼 조정</span></div>
-                <div class="mini-card"><b>설정</b><span>에이전트와 정책 확인</span></div>
+          <h1>Design For AIR로<br />디자인을 <span class="gradient-text">열고 리믹스하세요</span></h1>
+          <p class="summary">nn.design 배포판을 처음 쓰는 사람도 설치 후 프로젝트를 열고, 생성 결과를 리믹스하고, 팀 정책에 맞게 에이전트를 설정할 수 있습니다.</p>
+          <div class="actions">
+            <a class="button primary" href="https://github.com/ilous12/nn-design-release-feed/releases/latest">Try Now - 최신 설치 파일</a>
+            <a class="button secondary" href="#guide">View Documentation</a>
+          </div>
+
+          <div class="chat-demo" aria-label="Design For AIR chatbot style preview">
+            <div class="chat-header">
+              <div class="avatar">AI</div>
+              <div>
+                <div class="chat-title">Design For AIR Assistant</div>
+                <div class="status">Online</div>
               </div>
             </div>
-            <div class="composer"><span>작업 지시를 입력하세요...</span></div>
+            <div class="chat-body">
+              <div class="message user">
+                <div class="bubble">사내 관리자 화면을 모바일 우선으로 리믹스해줘.</div>
+              </div>
+              <div class="message assistant">
+                <div class="avatar">AI</div>
+                <div class="bubble">프로젝트를 열고 기존 디자인 맥락을 확인한 뒤, 목적과 플랫폼에 맞춰 화면 구조를 다시 제안하겠습니다.</div>
+              </div>
+              <div class="message assistant">
+                <div class="avatar" style="opacity:.5">AI</div>
+                <div class="bubble"><div class="typing"><span></span><span></span><span></span></div></div>
+              </div>
+            </div>
+            <div class="composer">
+              <div class="input">Type your design request...</div>
+              <div class="send">→</div>
+            </div>
           </div>
-        </aside>
+        </div>
       </section>
 
-      <section class="content" id="install">
-        <div class="content-shell">
-          <aside class="side-note" id="feed">
-            <h2>업데이트 피드</h2>
-            <p>앱은 메타데이터를 읽어 최신 버전과 플랫폼별 artifact를 확인합니다. 설치 파일을 직접 배포할 때는 같은 릴리스에 포함된 SHA-256 파일로 검증합니다.</p>
+      <section id="features" class="section white-section">
+        <div class="container">
+          <div class="section-head">
+            <h2>Built for <span class="gradient-text">Design Developers</span></h2>
+            <p>설치, 열기, 리믹스, 설정을 하나의 시작 흐름으로 묶었습니다.</p>
+          </div>
+          <div class="feature-grid">
+            <article class="feature-card">
+              <div class="icon-box">⌘</div>
+              <h3>프로젝트 열기</h3>
+              <p>작업 폴더나 사내 템플릿을 열어 디자인 맥락을 바로 연결합니다.</p>
+            </article>
+            <article class="feature-card">
+              <div class="icon-box">↻</div>
+              <h3>디자인 리믹스</h3>
+              <p>목적, 사용자, 플랫폼을 바꿔 같은 결과를 여러 방향으로 재구성합니다.</p>
+            </article>
+            <article class="feature-card">
+              <div class="icon-box">⚙</div>
+              <h3>팀 설정</h3>
+              <p>AI 에이전트, API 키, 언어, 디자인 시스템을 조직 정책에 맞춥니다.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="install" class="section">
+        <div class="container">
+          <div class="section-head">
+            <h2>Start in <span class="gradient-text">three steps</span></h2>
+            <p>초심자도 그대로 따라갈 수 있는 설치 흐름입니다.</p>
+          </div>
+          <div class="install-layout">
+            <article class="install-card">
+              <div class="icon-box">1</div>
+              <h3>파일 선택</h3>
+              <p>macOS 사용자는 최신 릴리스에서 <code>.dmg</code> 파일을 받습니다. payload는 업데이트 과정에서 앱이 자동으로 사용합니다.</p>
+            </article>
+            <article class="install-card emphasis">
+              <div class="icon-box">2</div>
+              <h3>앱 설치</h3>
+              <p>DMG를 열고 <strong>Design For AIR</strong>를 Applications 폴더로 이동합니다. 기존 버전은 종료 후 교체합니다.</p>
+            </article>
+            <article class="install-card">
+              <div class="icon-box">3</div>
+              <h3>첫 실행</h3>
+              <p>보안 확인이 나오면 배포 출처를 확인한 뒤 실행하고, 설정 화면에서 언어와 에이전트 상태를 점검합니다.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="guide" class="section white-section">
+        <div class="container">
+          <div class="section-head">
+            <h2>Guide for <span class="gradient-text">open and remix</span></h2>
+            <p>설치 후에는 열기, 리믹스, 설정 순서로 작업 기준을 잡습니다.</p>
+          </div>
+          <section class="guide-tabs" aria-label="Design For AIR guide tabs">
+            <input id="tab-install" name="guide-tab" type="radio" checked />
+            <input id="tab-guide" name="guide-tab" type="radio" />
+            <div class="tab-list" role="tablist" aria-label="Guide sections">
+              <label for="tab-install" role="tab">설치</label>
+              <label for="tab-guide" role="tab">가이드</label>
+            </div>
+            <div class="panels">
+              <section id="install-panel" class="tab-panel" role="tabpanel" aria-labelledby="tab-install">
+                <div class="guide-grid">
+                  <article class="guide-item">
+                    <h3>DMG 기준 배포</h3>
+                    <p>사용자 설치는 DMG를 기준으로 안내합니다.</p>
+                  </article>
+                  <article class="guide-item">
+                    <h3>Payload 업데이트</h3>
+                    <p>런처 payload는 자동 업데이트용 artifact로 함께 배포합니다.</p>
+                  </article>
+                  <article class="guide-item">
+                    <h3>버전 검증</h3>
+                    <p>앱 버전이 릴리스 태그보다 낮을 때 업데이트가 감지됩니다.</p>
+                  </article>
+                </div>
+                <div class="note">같은 버전의 앱과 feed를 비교하면 최신 상태로 표시됩니다.</div>
+              </section>
+              <section id="guide-panel" class="tab-panel" role="tabpanel" aria-labelledby="tab-guide">
+                <div class="guide-grid">
+                  <article class="guide-item">
+                    <h3>열기</h3>
+                    <p>작업할 프로젝트 폴더나 사내 템플릿 폴더를 엽니다.</p>
+                  </article>
+                  <article class="guide-item">
+                    <h3>리믹스</h3>
+                    <p>관리자 화면, 모바일 우선, 사내 서비스 톤처럼 목적을 바꿔 다시 요청합니다.</p>
+                  </article>
+                  <article class="guide-item">
+                    <h3>설정</h3>
+                    <p>허용된 에이전트, API 키, 언어, 디자인 시스템을 조직 정책에 맞춥니다.</p>
+                  </article>
+                </div>
+              </section>
+            </div>
+          </section>
+
+          <article id="feed" class="feed-card">
+            <h3>업데이트와 검증</h3>
+            <p>앱은 아래 메타데이터를 읽어 최신 버전과 플랫폼별 artifact를 확인합니다. GitHub Release asset에는 DMG, payload, SHA-256 체크섬이 함께 올라갑니다.</p>
             <div class="feed-links">
               <a href="./stable/latest/metadata.json">최신 메타데이터</a>
               <a href="./stable/latest/platforms/mac_arm64.json">macOS arm64 manifest</a>
             </div>
-          </aside>
+          </article>
+        </div>
+      </section>
 
-          <div>
-            <section class="tabs" aria-label="Design For AIR guide tabs">
-              <input id="tab-install" name="guide-tab" type="radio" checked />
-              <input id="tab-guide" name="guide-tab" type="radio" />
-
-              <div class="tab-list" role="tablist" aria-label="Guide sections">
-                <label for="tab-install" role="tab">설치</label>
-                <label for="tab-guide" role="tab">가이드</label>
-              </div>
-
-              <div class="panels">
-                <section id="install-panel" class="tab-panel" role="tabpanel" aria-labelledby="tab-install">
-                  <div class="grid">
-                    <article class="card">
-                      <h2>1. 파일 선택</h2>
-                      <p>macOS 사용자는 최신 릴리스에서 <code>.dmg</code> 파일을 받습니다. 업데이트용 payload는 앱이 자동으로 처리하므로 직접 열 필요가 없습니다.</p>
-                    </article>
-                    <article class="card">
-                      <h2>2. 앱 설치</h2>
-                      <p>DMG를 열고 <strong>Design For AIR</strong>를 Applications 폴더로 이동합니다. 기존 버전이 있다면 종료 후 교체합니다.</p>
-                    </article>
-                    <article class="card">
-                      <h2>3. 첫 실행</h2>
-                      <p>보안 확인이 나오면 배포 출처를 확인한 뒤 실행합니다. 첫 실행 후 설정 화면에서 언어와 에이전트 상태를 점검합니다.</p>
-                    </article>
-                  </div>
-
-                  <div class="note">개발자 검증 기준: 앱 버전은 릴리스 태그보다 낮아야 업데이트가 감지됩니다. 같은 버전의 앱과 feed를 비교하면 최신 상태로 표시됩니다.</div>
-                </section>
-
-                <section id="guide-panel" class="tab-panel" role="tabpanel" aria-labelledby="tab-guide">
-                  <div class="steps" id="guide">
-                    <article class="step">
-                      <div class="step-number">1</div>
-                      <div>
-                        <h2>열기</h2>
-                        <p>작업할 프로젝트 폴더나 사내 템플릿 폴더를 엽니다. 처음에는 작은 화면 단위로 시작하면 결과를 검토하기 쉽습니다.</p>
-                      </div>
-                    </article>
-                    <article class="step">
-                      <div class="step-number">2</div>
-                      <div>
-                        <h2>리믹스</h2>
-                        <p>생성된 결과를 그대로 확정하지 말고 목적을 바꿔 다시 요청합니다. 예: 관리자 화면, 모바일 우선, 사내 서비스 톤, 접근성 강화.</p>
-                      </div>
-                    </article>
-                    <article class="step">
-                      <div class="step-number">3</div>
-                      <div>
-                        <h2>설정</h2>
-                        <p>사용 가능한 AI 에이전트, API 키, 언어, 디자인 시스템을 조직 정책에 맞춥니다. 민감한 프로젝트에서는 허용된 에이전트만 연결합니다.</p>
-                      </div>
-                    </article>
-                  </div>
-                </section>
-              </div>
-            </section>
-
-            <section class="feed">
-              <h2>업데이트와 검증</h2>
-              <p>이 배포 페이지는 앱 설치 파일 자체보다 작은 feed 파일을 안정적으로 제공하는 역할을 합니다. GitHub Release asset에는 DMG, payload, SHA-256 체크섬이 함께 올라갑니다.</p>
-            </section>
+      <section class="section">
+        <div class="container">
+          <div class="cta-band">
+            <h2>Design For AIR를 바로 설치하세요</h2>
+            <p>사내 디자인 작업을 열고, 리믹스하고, 설정하는 흐름을 하나의 데스크톱 앱에서 시작합니다.</p>
+            <a class="button" href="https://github.com/ilous12/nn-design-release-feed/releases/latest">최신 릴리스 보기</a>
           </div>
         </div>
       </section>
