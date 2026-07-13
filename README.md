@@ -1,6 +1,6 @@
-# Design For AIR 시작 가이드
+# design for air 시작 가이드
 
-Design For AIR는 nn.design 배포판의 데스크톱 앱입니다. 회사 기준으로 AI 디자인 작업을 운영하고, Codex, Claude Code, Gemini CLI 같은 로컬 CLI와 사내 승인 모델을 연결해 비용, 데이터, 실행 환경을 통제합니다.
+design for air는 nn.design 배포판의 데스크톱 앱입니다. 회사 기준으로 AI 디자인 작업을 운영하고, Codex, Claude Code, Gemini CLI 같은 로컬 CLI와 사내 승인 모델을 연결해 비용, 데이터, 실행 환경을 통제합니다.
 
 ## 설치
 
