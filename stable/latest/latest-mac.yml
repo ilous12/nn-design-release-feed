@@ -1,9 +1,0 @@
-version: "0.12.1"
-files:
-  - url: "https://github.com/ilous12/nn-design-release-feed/releases/download/v0.12.1/open-design-0.12.1-mac-arm64.zip"
-    sha512: "u/DOA0Hhd1SCu5u/pn/phEImKjtKZjTAGcbsCYKZqXyOzPz6hrNGVYQo7YCpE+7mT7r7uHkEnkTMGNIG09asUw=="
-    size: 182020249
-path: "https://github.com/ilous12/nn-design-release-feed/releases/download/v0.12.1/open-design-0.12.1-mac-arm64.zip"
-sha512: "u/DOA0Hhd1SCu5u/pn/phEImKjtKZjTAGcbsCYKZqXyOzPz6hrNGVYQo7YCpE+7mT7r7uHkEnkTMGNIG09asUw=="
-releaseDate: "2026-07-13T05:24:03Z"
-releaseNotes: "nn.design 0.12.1"

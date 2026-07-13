@@ -4,120 +4,357 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Design For AIR 시작 가이드</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23b8f06f'/%3E%3Cpath d='M17 44 29 18h6l12 26h-7l-2-5H26l-2 5h-7Zm11-11h8l-4-10-4 10Z' fill='%23090b0f'/%3E%3C/svg%3E" />
     <style>
       :root {
-        color-scheme: light;
-        --bg: #f7f7f4;
-        --panel: #ffffff;
-        --text: #202421;
-        --muted: #626961;
-        --line: #d9ddd5;
-        --line-strong: #b9c0b5;
-        --accent: #2f6f5e;
-        --accent-strong: #214f43;
-        --accent-soft: #e8f1ec;
-        --warn: #8a5a16;
+        color-scheme: dark;
+        --bg: #090b0f;
+        --surface: #11151d;
+        --surface-2: #171c25;
+        --surface-3: #f7f8f5;
+        --text: #f5f7f2;
+        --text-dark: #151812;
+        --muted: #a7aea4;
+        --muted-dark: #5d655c;
+        --line: rgba(255, 255, 255, 0.12);
+        --line-dark: #dfe3dc;
+        --accent: #b8f06f;
+        --accent-2: #53d3a2;
+        --accent-dark: #315b1f;
+        --shadow: 0 24px 70px rgba(0, 0, 0, 0.38);
       }
 
       * { box-sizing: border-box; }
 
+      html {
+        scroll-behavior: smooth;
+      }
+
       body {
         margin: 0;
-        background: var(--bg);
+        background:
+          radial-gradient(circle at 20% 0%, rgba(83, 211, 162, 0.18), transparent 30%),
+          linear-gradient(180deg, #090b0f 0%, #0c1016 44%, #f7f8f5 44%, #f7f8f5 100%);
         color: var(--text);
         font-family: "Pretendard", -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
-        line-height: 1.65;
+        line-height: 1.55;
       }
 
       main {
-        width: min(1080px, calc(100% - 40px));
+        width: min(1180px, calc(100% - 40px));
         margin: 0 auto;
-        padding: 40px 0 64px;
+        padding: 0 0 72px;
       }
 
-      header {
-        border-bottom: 1px solid var(--line);
-        padding: 0 0 24px;
-        margin-bottom: 24px;
+      .nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 72px;
+      }
+
+      .brand {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        color: var(--text);
+        font-weight: 760;
+      }
+
+      .mark {
+        display: grid;
+        place-items: center;
+        width: 34px;
+        height: 34px;
+        border: 1px solid rgba(255, 255, 255, 0.16);
+        border-radius: 9px;
+        background: #f5f7f2;
+        color: #11151d;
+        font-size: 13px;
+        font-weight: 820;
+      }
+
+      .nav-links {
+        display: flex;
+        align-items: center;
+        gap: 22px;
+      }
+
+      .nav-links a {
+        color: rgba(245, 247, 242, 0.72);
+        font-size: 14px;
+        font-weight: 640;
+      }
+
+      .nav-links a:hover {
+        color: var(--text);
+        text-decoration: none;
+      }
+
+      .hero {
+        display: grid;
+        grid-template-columns: minmax(0, 1.02fr) minmax(360px, 0.98fr);
+        gap: 46px;
+        align-items: center;
+        min-height: 560px;
+        padding: 52px 0 72px;
       }
 
       h1 {
-        margin: 0 0 10px;
-        font-size: clamp(28px, 4vw, 44px);
-        line-height: 1.14;
+        margin: 0;
+        max-width: 720px;
+        font-size: clamp(42px, 7vw, 76px);
+        line-height: 0.98;
         letter-spacing: 0;
       }
 
       h2 {
-        margin: 0 0 14px;
-        font-size: 22px;
-        line-height: 1.25;
+        margin: 0;
+        font-size: 28px;
+        line-height: 1.2;
         letter-spacing: 0;
       }
 
       h3 {
-        margin: 0 0 6px;
-        font-size: 16px;
+        margin: 0;
+        font-size: 17px;
         line-height: 1.35;
         letter-spacing: 0;
       }
 
       p {
         margin: 0;
-        color: var(--muted);
+        color: inherit;
       }
 
       a {
         color: var(--accent);
-        font-weight: 650;
+        font-weight: 700;
         text-decoration: none;
       }
 
       a:hover {
-        color: var(--accent-strong);
+        color: #d4ff9d;
         text-decoration: underline;
       }
 
       code {
-        border: 1px solid var(--line);
-        border-radius: 5px;
-        background: #fafaf8;
-        padding: 1px 5px;
-        font-size: 0.94em;
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        border-radius: 6px;
+        background: rgba(255, 255, 255, 0.07);
+        padding: 2px 6px;
+        color: var(--text);
+        font-size: 0.92em;
       }
 
       .summary {
-        max-width: 760px;
-        font-size: 17px;
+        max-width: 620px;
+        margin-top: 22px;
+        color: rgba(245, 247, 242, 0.74);
+        font-size: 19px;
+      }
+
+      .accent {
+        color: var(--accent);
       }
 
       .actions {
         display: flex;
         flex-wrap: wrap;
-        gap: 10px;
-        margin-top: 22px;
+        gap: 12px;
+        margin-top: 32px;
       }
 
       .button {
-        display: inline-flex;
+        display: flex;
         align-items: center;
-        min-height: 40px;
-        border: 1px solid var(--line-strong);
-        border-radius: 8px;
-        padding: 8px 13px;
-        background: var(--panel);
+        justify-content: center;
+        min-height: 48px;
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        border-radius: 10px;
+        padding: 0 18px;
+        background: transparent;
         color: var(--text);
-        font-weight: 650;
+        font-weight: 760;
+      }
+
+      .button:hover {
+        border-color: rgba(255, 255, 255, 0.34);
+        color: var(--text);
+        text-decoration: none;
       }
 
       .button.primary {
         border-color: var(--accent);
         background: var(--accent);
-        color: #ffffff;
+        color: #10140c;
+      }
+
+      .button.primary:hover {
+        color: #10140c;
+      }
+
+      .preview {
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        border-radius: 18px;
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+        box-shadow: var(--shadow);
+        overflow: hidden;
+      }
+
+      .preview-top {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        padding: 15px 16px;
+      }
+
+      .window-dots {
+        display: flex;
+        gap: 7px;
+      }
+
+      .window-dots span {
+        width: 9px;
+        height: 9px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.34);
+      }
+
+      .preview-title {
+        color: rgba(245, 247, 242, 0.7);
+        font-size: 13px;
+        font-weight: 650;
+      }
+
+      .preview-body {
+        display: grid;
+        gap: 14px;
+        padding: 18px;
+      }
+
+      .prompt {
+        margin-left: auto;
+        max-width: 76%;
+        border-radius: 16px 16px 4px 16px;
+        background: var(--accent);
+        color: #11150c;
+        padding: 13px 15px;
+        font-size: 14px;
+        font-weight: 650;
+      }
+
+      .response {
+        display: grid;
+        gap: 12px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 16px;
+        background: rgba(17, 21, 29, 0.92);
+        padding: 16px;
+      }
+
+      .response strong {
+        color: var(--text);
+        font-size: 15px;
+      }
+
+      .response p {
+        color: rgba(245, 247, 242, 0.68);
+        font-size: 14px;
+      }
+
+      .mini-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 8px;
+      }
+
+      .mini-card {
+        min-height: 68px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 10px;
+        background: rgba(255, 255, 255, 0.06);
+        padding: 10px;
+      }
+
+      .mini-card b {
+        display: block;
+        color: var(--text);
+        font-size: 12px;
+      }
+
+      .mini-card span {
+        display: block;
+        margin-top: 5px;
+        color: rgba(245, 247, 242, 0.52);
+        font-size: 12px;
+      }
+
+      .composer {
+        display: flex;
+        color: var(--text);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 12px;
+        background: rgba(255, 255, 255, 0.06);
+        padding: 12px;
+      }
+
+      .composer span {
+        color: rgba(245, 247, 242, 0.52);
+        font-size: 13px;
+      }
+
+      .content {
+        color: var(--text-dark);
+      }
+
+      .content-shell {
+        display: grid;
+        grid-template-columns: 260px minmax(0, 1fr);
+        gap: 28px;
+        align-items: start;
+      }
+
+      .side-note {
+        position: sticky;
+        top: 24px;
+        border: 1px solid var(--line-dark);
+        border-radius: 14px;
+        background: #ffffff;
+        padding: 20px;
+      }
+
+      .side-note h2 {
+        color: var(--text-dark);
+        font-size: 19px;
+      }
+
+      .side-note p {
+        margin-top: 10px;
+        color: var(--muted-dark);
+        font-size: 14px;
+      }
+
+      .feed-links {
+        display: grid;
+        gap: 9px;
+        margin-top: 18px;
+      }
+
+      .feed-links a {
+        display: block;
+        border-top: 1px solid var(--line-dark);
+        padding-top: 9px;
+        color: var(--accent-dark);
+        font-size: 14px;
       }
 
       .tabs {
-        margin-top: 22px;
+        border: 1px solid var(--line-dark);
+        border-radius: 16px;
+        background: #ffffff;
+        overflow: hidden;
       }
 
       .tabs input {
@@ -128,23 +365,24 @@
 
       .tab-list {
         display: flex;
-        gap: 0;
-        border-bottom: 1px solid var(--line);
-        margin-bottom: 24px;
+        border-bottom: 1px solid var(--line-dark);
+        background: #fafbf8;
       }
 
       .tab-list label {
         cursor: pointer;
+        border-right: 1px solid var(--line-dark);
         border-bottom: 2px solid transparent;
-        padding: 12px 16px 10px;
-        color: var(--muted);
-        font-weight: 650;
+        padding: 16px 22px 14px;
+        color: var(--muted-dark);
+        font-weight: 760;
       }
 
       #tab-install:checked ~ .tab-list label[for="tab-install"],
       #tab-guide:checked ~ .tab-list label[for="tab-guide"] {
-        border-bottom-color: var(--accent);
-        color: var(--text);
+        border-bottom-color: #151812;
+        color: var(--text-dark);
+        background: #ffffff;
       }
 
       .tab-panel {
@@ -156,17 +394,42 @@
         display: block;
       }
 
+      .panels {
+        padding: 24px;
+      }
+
       .grid {
         display: grid;
         grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 14px;
+        gap: 12px;
       }
 
       .card {
-        border: 1px solid var(--line);
-        border-radius: 8px;
-        background: var(--panel);
+        border: 1px solid var(--line-dark);
+        border-radius: 12px;
+        background: #fbfcf9;
         padding: 18px;
+      }
+
+      .card h2,
+      .step h2,
+      .feed h2 {
+        color: var(--text-dark);
+        font-size: 20px;
+      }
+
+      .card p,
+      .step p,
+      .feed p {
+        margin-top: 9px;
+        color: var(--muted-dark);
+        font-size: 15px;
+      }
+
+      .card code {
+        border-color: var(--line-dark);
+        background: #f1f3ee;
+        color: var(--text-dark);
       }
 
       .card p + p {
@@ -176,43 +439,45 @@
       .steps {
         display: grid;
         gap: 12px;
-        margin-top: 14px;
       }
 
       .step {
         display: grid;
-        grid-template-columns: 36px 1fr;
-        gap: 14px;
-        border: 1px solid var(--line);
-        border-radius: 8px;
-        background: var(--panel);
-        padding: 16px;
+        grid-template-columns: 38px 1fr;
+        gap: 16px;
+        border: 1px solid var(--line-dark);
+        border-radius: 12px;
+        background: #fbfcf9;
+        padding: 18px;
       }
 
       .step-number {
         display: grid;
         place-items: center;
-        width: 30px;
-        height: 30px;
-        border: 1px solid var(--line-strong);
-        border-radius: 6px;
-        color: var(--accent-strong);
+        width: 32px;
+        height: 32px;
+        border-radius: 9px;
+        background: #151812;
+        color: var(--accent);
         font-weight: 750;
       }
 
       .note {
-        border: 1px solid #e0c88f;
-        border-radius: 8px;
-        background: #fff8e8;
-        color: var(--warn);
+        border: 1px solid #d8decf;
+        border-radius: 12px;
+        background: #f6f8f0;
+        color: #526044;
         padding: 14px 16px;
         margin-top: 18px;
+        font-size: 14px;
       }
 
       .feed {
-        margin-top: 28px;
-        border-top: 1px solid var(--line);
-        padding-top: 22px;
+        margin-top: 18px;
+        border: 1px solid var(--line-dark);
+        border-radius: 16px;
+        background: #ffffff;
+        padding: 22px 24px;
       }
 
       .feed ul {
@@ -222,10 +487,44 @@
         padding-left: 18px;
       }
 
+      .feed a {
+        color: var(--accent-dark);
+      }
+
       @media (max-width: 820px) {
         main {
           width: min(100% - 28px, 1080px);
-          padding-top: 28px;
+        }
+
+        .nav {
+          height: 64px;
+        }
+
+        .nav-links {
+          display: none;
+        }
+
+        .hero {
+          grid-template-columns: 1fr;
+          gap: 28px;
+          min-height: auto;
+          padding: 36px 0 52px;
+        }
+
+        .preview {
+          border-radius: 14px;
+        }
+
+        .mini-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .content-shell {
+          grid-template-columns: 1fr;
+        }
+
+        .side-note {
+          position: static;
         }
 
         .grid {
@@ -245,79 +544,124 @@
   </head>
   <body>
     <main>
-      <header>
-        <h1>Design For AIR 시작 가이드</h1>
-        <p class="summary">Design For AIR는 nn.design 배포판의 데스크톱 앱입니다. 이 페이지는 처음 설치하는 사용자와 팀 내 가이드를 만드는 개발자를 위해 설치, 열기, 리믹스, 설정 흐름을 한곳에 정리합니다.</p>
-        <div class="actions">
-          <a class="button primary" href="https://github.com/ilous12/nn-design-release-feed/releases/latest">최신 설치 파일</a>
-          <a class="button" href="https://github.com/ilous12/nn-design-release-feed/releases">전체 릴리스</a>
+      <nav class="nav" aria-label="Design For AIR navigation">
+        <a class="brand" href="#">
+          <span class="mark">AIR</span>
+          <span>Design For AIR</span>
+        </a>
+        <div class="nav-links">
+          <a href="#install">설치</a>
+          <a href="#guide">가이드</a>
+          <a href="#feed">업데이트</a>
         </div>
-      </header>
+      </nav>
 
-      <section class="tabs" aria-label="Design For AIR guide tabs">
-        <input id="tab-install" name="guide-tab" type="radio" checked />
-        <input id="tab-guide" name="guide-tab" type="radio" />
-
-        <div class="tab-list" role="tablist" aria-label="Guide sections">
-          <label for="tab-install" role="tab">설치</label>
-          <label for="tab-guide" role="tab">가이드</label>
+      <section class="hero">
+        <div>
+          <h1>사내 디자인 작업을<br />AI와 함께 <span class="accent">열고 리믹스</span>합니다.</h1>
+          <p class="summary">Design For AIR는 nn.design 배포판의 데스크톱 앱입니다. 처음 사용하는 사람도 설치 후 프로젝트를 열고, 화면을 리믹스하고, 팀 정책에 맞게 에이전트를 설정할 수 있도록 구성했습니다.</p>
+          <div class="actions">
+            <a class="button primary" href="https://github.com/ilous12/nn-design-release-feed/releases/latest">최신 설치 파일</a>
+            <a class="button" href="https://github.com/ilous12/nn-design-release-feed/releases">전체 릴리스</a>
+          </div>
         </div>
 
-        <div class="panels">
-          <section id="install-panel" class="tab-panel" role="tabpanel" aria-labelledby="tab-install">
-            <div class="grid">
-              <article class="card">
-                <h2>1. 파일 선택</h2>
-                <p>macOS 사용자는 최신 릴리스에서 <code>.dmg</code> 파일을 받습니다. 업데이트용 payload는 앱이 자동으로 처리하므로 직접 열 필요가 없습니다.</p>
-              </article>
-              <article class="card">
-                <h2>2. 앱 설치</h2>
-                <p>DMG를 열고 <strong>Design For AIR</strong>를 Applications 폴더로 이동합니다. 기존 버전이 있다면 종료 후 교체합니다.</p>
-              </article>
-              <article class="card">
-                <h2>3. 첫 실행</h2>
-                <p>보안 확인이 나오면 배포 출처를 확인한 뒤 실행합니다. 첫 실행 후 설정 화면에서 언어와 에이전트 상태를 점검합니다.</p>
-              </article>
+        <aside class="preview" aria-label="Design For AIR preview">
+          <div class="preview-top">
+            <div class="window-dots" aria-hidden="true"><span></span><span></span><span></span></div>
+            <div class="preview-title">Design For AIR session</div>
+          </div>
+          <div class="preview-body">
+            <div class="prompt">사내 관리자 화면을 모바일 우선으로 리믹스해줘.</div>
+            <div class="response">
+              <strong>리믹스 방향을 정리했습니다.</strong>
+              <p>기존 화면을 유지하면서 정보 우선순위, 버튼 밀도, 접근성 기준을 사내 디자인 시스템에 맞춰 재구성합니다.</p>
+              <div class="mini-grid">
+                <div class="mini-card"><b>열기</b><span>프로젝트 폴더 연결</span></div>
+                <div class="mini-card"><b>리믹스</b><span>목적과 플랫폼 조정</span></div>
+                <div class="mini-card"><b>설정</b><span>에이전트와 정책 확인</span></div>
+              </div>
             </div>
-
-            <div class="note">개발자 검증 기준: 앱 버전은 릴리스 태그보다 낮아야 업데이트가 감지됩니다. 같은 버전의 앱과 feed를 비교하면 최신 상태로 표시됩니다.</div>
-          </section>
-
-          <section id="guide-panel" class="tab-panel" role="tabpanel" aria-labelledby="tab-guide">
-            <div class="steps">
-              <article class="step">
-                <div class="step-number">1</div>
-                <div>
-                  <h2>열기</h2>
-                  <p>작업할 프로젝트 폴더나 사내 템플릿 폴더를 엽니다. 처음에는 작은 화면 단위로 시작하면 결과를 검토하기 쉽습니다.</p>
-                </div>
-              </article>
-              <article class="step">
-                <div class="step-number">2</div>
-                <div>
-                  <h2>리믹스</h2>
-                  <p>생성된 결과를 그대로 확정하지 말고 목적을 바꿔 다시 요청합니다. 예: 관리자 화면, 모바일 우선, 사내 서비스 톤, 접근성 강화.</p>
-                </div>
-              </article>
-              <article class="step">
-                <div class="step-number">3</div>
-                <div>
-                  <h2>설정</h2>
-                  <p>사용 가능한 AI 에이전트, API 키, 언어, 디자인 시스템을 조직 정책에 맞춥니다. 민감한 프로젝트에서는 허용된 에이전트만 연결합니다.</p>
-                </div>
-              </article>
-            </div>
-          </section>
-        </div>
+            <div class="composer"><span>작업 지시를 입력하세요...</span></div>
+          </div>
+        </aside>
       </section>
 
-      <section class="feed">
-        <h2>업데이트와 검증</h2>
-        <p>앱은 아래 메타데이터를 읽어 최신 버전과 플랫폼별 artifact를 확인합니다. 설치 파일을 직접 배포할 때는 같은 릴리스에 포함된 SHA-256 파일로 검증합니다.</p>
-        <ul>
-          <li><a href="./stable/latest/metadata.json">최신 메타데이터</a></li>
-          <li><a href="./stable/latest/platforms/mac_arm64.json">macOS arm64 manifest</a></li>
-        </ul>
+      <section class="content" id="install">
+        <div class="content-shell">
+          <aside class="side-note" id="feed">
+            <h2>업데이트 피드</h2>
+            <p>앱은 메타데이터를 읽어 최신 버전과 플랫폼별 artifact를 확인합니다. 설치 파일을 직접 배포할 때는 같은 릴리스에 포함된 SHA-256 파일로 검증합니다.</p>
+            <div class="feed-links">
+              <a href="./stable/latest/metadata.json">최신 메타데이터</a>
+              <a href="./stable/latest/platforms/mac_arm64.json">macOS arm64 manifest</a>
+            </div>
+          </aside>
+
+          <div>
+            <section class="tabs" aria-label="Design For AIR guide tabs">
+              <input id="tab-install" name="guide-tab" type="radio" checked />
+              <input id="tab-guide" name="guide-tab" type="radio" />
+
+              <div class="tab-list" role="tablist" aria-label="Guide sections">
+                <label for="tab-install" role="tab">설치</label>
+                <label for="tab-guide" role="tab">가이드</label>
+              </div>
+
+              <div class="panels">
+                <section id="install-panel" class="tab-panel" role="tabpanel" aria-labelledby="tab-install">
+                  <div class="grid">
+                    <article class="card">
+                      <h2>1. 파일 선택</h2>
+                      <p>macOS 사용자는 최신 릴리스에서 <code>.dmg</code> 파일을 받습니다. 업데이트용 payload는 앱이 자동으로 처리하므로 직접 열 필요가 없습니다.</p>
+                    </article>
+                    <article class="card">
+                      <h2>2. 앱 설치</h2>
+                      <p>DMG를 열고 <strong>Design For AIR</strong>를 Applications 폴더로 이동합니다. 기존 버전이 있다면 종료 후 교체합니다.</p>
+                    </article>
+                    <article class="card">
+                      <h2>3. 첫 실행</h2>
+                      <p>보안 확인이 나오면 배포 출처를 확인한 뒤 실행합니다. 첫 실행 후 설정 화면에서 언어와 에이전트 상태를 점검합니다.</p>
+                    </article>
+                  </div>
+
+                  <div class="note">개발자 검증 기준: 앱 버전은 릴리스 태그보다 낮아야 업데이트가 감지됩니다. 같은 버전의 앱과 feed를 비교하면 최신 상태로 표시됩니다.</div>
+                </section>
+
+                <section id="guide-panel" class="tab-panel" role="tabpanel" aria-labelledby="tab-guide">
+                  <div class="steps" id="guide">
+                    <article class="step">
+                      <div class="step-number">1</div>
+                      <div>
+                        <h2>열기</h2>
+                        <p>작업할 프로젝트 폴더나 사내 템플릿 폴더를 엽니다. 처음에는 작은 화면 단위로 시작하면 결과를 검토하기 쉽습니다.</p>
+                      </div>
+                    </article>
+                    <article class="step">
+                      <div class="step-number">2</div>
+                      <div>
+                        <h2>리믹스</h2>
+                        <p>생성된 결과를 그대로 확정하지 말고 목적을 바꿔 다시 요청합니다. 예: 관리자 화면, 모바일 우선, 사내 서비스 톤, 접근성 강화.</p>
+                      </div>
+                    </article>
+                    <article class="step">
+                      <div class="step-number">3</div>
+                      <div>
+                        <h2>설정</h2>
+                        <p>사용 가능한 AI 에이전트, API 키, 언어, 디자인 시스템을 조직 정책에 맞춥니다. 민감한 프로젝트에서는 허용된 에이전트만 연결합니다.</p>
+                      </div>
+                    </article>
+                  </div>
+                </section>
+              </div>
+            </section>
+
+            <section class="feed">
+              <h2>업데이트와 검증</h2>
+              <p>이 배포 페이지는 앱 설치 파일 자체보다 작은 feed 파일을 안정적으로 제공하는 역할을 합니다. GitHub Release asset에는 DMG, payload, SHA-256 체크섬이 함께 올라갑니다.</p>
+            </section>
+          </div>
+        </div>
       </section>
     </main>
   </body>
