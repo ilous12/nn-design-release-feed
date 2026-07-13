@@ -466,6 +466,13 @@
         gap: 18px;
       }
 
+      .usage-layout .icon-box {
+        width: auto;
+        min-width: 64px;
+        padding: 0 12px;
+        white-space: nowrap;
+      }
+
       .install-card.emphasis {
         position: relative;
         border-color: var(--primary);
@@ -653,8 +660,6 @@
           <a href="#features">컨셉</a>
           <a href="#usage">활용</a>
           <a href="#install">설치</a>
-          <a href="#guide">가이드</a>
-          <a href="#feed">업데이트</a>
         </div>
         <div class="nav-actions">
           <a href="https://github.com/ilous12/nn-design-release-feed/releases">릴리스</a>
@@ -676,7 +681,7 @@
             <a class="button primary" href="https://github.com/ilous12/nn-design-release-feed/releases/latest">최신 DMG 받기</a>
             <a class="button secondary" href="#usage">활용 방식 보기</a>
           </div>
-          <div class="install-line">설치: DMG를 받아 Applications로 드래그하면 바로 시작할 수 있습니다.</div>
+          <div class="install-line">설치: 최신 릴리스에서 운영체제에 맞는 설치 파일을 받아 바로 시작할 수 있습니다.</div>
 
           <div class="chat-demo" aria-label="Design For AIR chatbot style preview">
             <div class="chat-header">
@@ -791,70 +796,9 @@
         <div class="container">
           <div class="section-head">
             <h2>설치는 가볍게,<br /><span class="gradient-text">운영은 팀 기준대로</span></h2>
-            <p>macOS 사용자는 DMG를 설치하고, 이후 설정에서 허용된 에이전트와 키 관리 방식을 맞추면 됩니다.</p>
+            <p>macOS와 Windows 모두 같은 활용 흐름을 기준으로 안내하고, 설치 후에는 팀 정책에 맞는 에이전트와 키 관리 방식을 설정합니다.</p>
           </div>
-          <div class="install-line">설치: 최신 릴리스의 <code>.dmg</code>를 열고 <strong>Design For AIR</strong>를 Applications로 드래그하세요.</div>
-        </div>
-      </section>
-
-      <section id="guide" class="section">
-        <div class="container">
-          <div class="section-head">
-            <h2>처음 쓰는 사람도<br /><span class="gradient-text">이 순서로 시작합니다</span></h2>
-            <p>설치 설명은 줄이고, 실제 활용 단계에서 무엇을 선택해야 하는지에 집중했습니다.</p>
-          </div>
-          <section class="guide-tabs" aria-label="Design For AIR guide tabs">
-            <input id="tab-install" name="guide-tab" type="radio" checked />
-            <input id="tab-guide" name="guide-tab" type="radio" />
-            <div class="tab-list" role="tablist" aria-label="Guide sections">
-              <label for="tab-install" role="tab">설치</label>
-              <label for="tab-guide" role="tab">가이드</label>
-            </div>
-            <div class="panels">
-              <section id="install-panel" class="tab-panel" role="tabpanel" aria-labelledby="tab-install">
-                <div class="guide-grid">
-                  <article class="guide-item">
-                    <h3>DMG 설치</h3>
-                    <p>최신 릴리스에서 DMG를 받고 Applications로 옮기면 사용자 설치는 끝납니다.</p>
-                  </article>
-                  <article class="guide-item">
-                    <h3>업데이트</h3>
-                    <p>앱은 feed의 metadata와 macOS manifest를 확인해 새 버전과 payload를 찾습니다.</p>
-                  </article>
-                  <article class="guide-item">
-                    <h3>검증</h3>
-                    <p>업로드된 DMG, payload, SHA-256 체크섬으로 배포 파일을 확인할 수 있습니다.</p>
-                  </article>
-                </div>
-                <div class="note">같은 버전의 앱과 feed를 비교하면 최신 상태로 표시됩니다.</div>
-              </section>
-              <section id="guide-panel" class="tab-panel" role="tabpanel" aria-labelledby="tab-guide">
-                <div class="guide-grid">
-                  <article class="guide-item">
-                    <h3>열기</h3>
-                    <p>작업할 프로젝트 폴더, 디자인 시스템, 사내 템플릿을 열어 컨텍스트를 고정합니다.</p>
-                  </article>
-                  <article class="guide-item">
-                    <h3>리믹스</h3>
-                    <p>생성된 화면을 AIR 서비스 톤, 모바일 우선, 관리자 업무 흐름, 개발 전달물 기준으로 다시 요청합니다.</p>
-                  </article>
-                  <article class="guide-item">
-                    <h3>설정</h3>
-                    <p>Codex, Claude Code, Gemini CLI, 로컬 모델, BYOK, 사내 API 키를 보안 정책과 비용 기준에 맞춥니다.</p>
-                  </article>
-                </div>
-              </section>
-            </div>
-          </section>
-
-          <article id="feed" class="feed-card">
-            <h3>업데이트와 검증</h3>
-            <p>앱은 아래 메타데이터를 읽어 최신 버전과 플랫폼별 artifact를 확인합니다. GitHub Release asset에는 DMG, payload, SHA-256 체크섬이 함께 올라갑니다.</p>
-            <div class="feed-links">
-              <a href="./stable/latest/metadata.json">최신 메타데이터</a>
-              <a href="./stable/latest/platforms/mac_arm64.json">macOS arm64 manifest</a>
-            </div>
-          </article>
+          <div class="install-line">설치: 최신 릴리스에서 macOS는 <code>.dmg</code>, Windows는 제공되는 설치 패키지를 받아 실행하세요.</div>
         </div>
       </section>
 
