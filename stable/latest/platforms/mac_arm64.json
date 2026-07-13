@@ -1,0 +1,54 @@
+{
+  "arch": "arm64",
+  "artifacts": {
+    "dmg": {
+      "contentType": "application/x-apple-diskimage",
+      "name": "open-design-0.12.1-mac-arm64.dmg",
+      "size": 180232595,
+      "url": "https://github.com/ilous12/nn-design-release-feed/releases/download/v0.12.1/open-design-0.12.1-mac-arm64.dmg",
+      "sha256Url": "https://github.com/ilous12/nn-design-release-feed/releases/download/v0.12.1/open-design-0.12.1-mac-arm64.dmg.sha256"
+    },
+    "zip": {
+      "contentType": "application/zip",
+      "name": "open-design-0.12.1-mac-arm64.zip",
+      "size": 182020283,
+      "url": "https://github.com/ilous12/nn-design-release-feed/releases/download/v0.12.1/open-design-0.12.1-mac-arm64.zip",
+      "sha256Url": "https://github.com/ilous12/nn-design-release-feed/releases/download/v0.12.1/open-design-0.12.1-mac-arm64.zip.sha256"
+    }
+  },
+  "channel": "stable",
+  "enabled": true,
+  "feed": {
+    "latestUrl": "https://ilous12.github.io/nn-design-release-feed/stable/latest/latest-mac.yml",
+    "name": "latest-mac.yml",
+    "url": "https://ilous12.github.io/nn-design-release-feed/stable/versions/0.12.1/latest-mac.yml"
+  },
+  "generatedAt": "2026-07-13T05:04:10.611Z",
+  "github": {
+    "branch": "",
+    "commit": "",
+    "repository": "",
+    "runAttempt": 0,
+    "runId": 0,
+    "workflow": ""
+  },
+  "dryRun": true,
+  "dryRunMode": "",
+  "label": "macOS arm64",
+  "legacyPlatformKey": "mac",
+  "platform": "mac",
+  "platformKey": "mac_arm64",
+  "releaseTarget": "mac_arm64",
+  "report": null,
+  "r2": {
+    "latestManifestUrl": "https://ilous12.github.io/nn-design-release-feed/stable/latest/platforms/mac_arm64.json",
+    "latestPrefix": "stable/latest",
+    "publicOrigin": "https://ilous12.github.io/nn-design-release-feed",
+    "versionManifestUrl": "https://ilous12.github.io/nn-design-release-feed/stable/versions/0.12.1/platforms/mac_arm64.json",
+    "versionPrefix": "stable/versions/0.12.1"
+  },
+  "releaseVersion": "0.12.1",
+  "signed": true,
+  "status": "published",
+  "version": 1
+}
