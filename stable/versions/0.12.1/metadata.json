@@ -12,7 +12,7 @@
   ],
   "failedPlatforms": [],
   "failedTargets": [],
-  "generatedAt": "2026-07-13T09:13:07.828Z",
+  "generatedAt": "2026-07-15T08:50:47.718Z",
   "github": {
     "branch": "",
     "commit": "",
@@ -30,14 +30,14 @@
         "dmg": {
           "contentType": "application/x-apple-diskimage",
           "name": "open-design-0.12.1-mac-arm64.dmg",
-          "size": 165154268,
+          "size": 174771872,
           "url": "https://github.com/ilous12/nn-design-release-feed/releases/download/v0.12.1/open-design-0.12.1-mac-arm64.dmg",
           "sha256Url": "https://github.com/ilous12/nn-design-release-feed/releases/download/v0.12.1/open-design-0.12.1-mac-arm64.dmg.sha256"
         },
         "payload": {
           "contentType": "application/zip",
           "name": "open-design-0.12.1-mac-arm64-payload.zip",
-          "size": 179873189,
+          "size": 186901910,
           "url": "https://github.com/ilous12/nn-design-release-feed/releases/download/v0.12.1/open-design-0.12.1-mac-arm64-payload.zip",
           "sha256Url": "https://github.com/ilous12/nn-design-release-feed/releases/download/v0.12.1/open-design-0.12.1-mac-arm64-payload.zip.sha256"
         }
@@ -45,7 +45,7 @@
       "channel": "stable",
       "enabled": true,
       "feed": null,
-      "generatedAt": "2026-07-13T09:13:07.562Z",
+      "generatedAt": "2026-07-15T08:50:47.305Z",
       "github": {
         "branch": "",
         "commit": "",
@@ -103,14 +103,14 @@
         "dmg": {
           "contentType": "application/x-apple-diskimage",
           "name": "open-design-0.12.1-mac-arm64.dmg",
-          "size": 165154268,
+          "size": 174771872,
           "url": "https://github.com/ilous12/nn-design-release-feed/releases/download/v0.12.1/open-design-0.12.1-mac-arm64.dmg",
           "sha256Url": "https://github.com/ilous12/nn-design-release-feed/releases/download/v0.12.1/open-design-0.12.1-mac-arm64.dmg.sha256"
         },
         "payload": {
           "contentType": "application/zip",
           "name": "open-design-0.12.1-mac-arm64-payload.zip",
-          "size": 179873189,
+          "size": 186901910,
           "url": "https://github.com/ilous12/nn-design-release-feed/releases/download/v0.12.1/open-design-0.12.1-mac-arm64-payload.zip",
           "sha256Url": "https://github.com/ilous12/nn-design-release-feed/releases/download/v0.12.1/open-design-0.12.1-mac-arm64-payload.zip.sha256"
         }
@@ -118,7 +118,7 @@
       "channel": "stable",
       "enabled": true,
       "feed": null,
-      "generatedAt": "2026-07-13T09:13:07.562Z",
+      "generatedAt": "2026-07-15T08:50:47.305Z",
       "github": {
         "branch": "",
         "commit": "",
