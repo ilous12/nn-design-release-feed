@@ -204,14 +204,20 @@
       }
 
       .chat-demo {
-        max-width: 768px;
+        max-width: 920px;
         margin: 48px auto 0;
-        border: 1px solid var(--border);
-        border-radius: 18px;
+        border: 1px solid rgba(229, 231, 235, 0.9);
+        border-radius: 22px;
         background: #ffffff;
         box-shadow: var(--shadow);
         overflow: hidden;
-        text-align: left;
+      }
+
+      .preview-image {
+        display: block;
+        width: 100%;
+        height: auto;
+        background: #ffffff;
       }
 
       .chat-header {
@@ -679,47 +685,16 @@
             <svg class="bolt" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
             Codex · Claude Code · Gemini CLI · Local Model
           </div>
-          <h1>회사 기준으로 쓰는<br /><span class="gradient-text">AI 디자인 도구</span></h1>
-          <p class="summary">nn.design은 특정 플랫폼에 업무를 맡기지 않고, Codex, Claude Code, Gemini CLI 같은 로컬 도구와 사내 승인 모델을 연결해 비용과 데이터를 통제합니다.</p>
+          <h1>디자인 업무의 시작점을<br /><span class="gradient-text">회사 안에 둡니다</span></h1>
+          <p class="summary">design for air는 요구사항, 레퍼런스, 디자인 시스템, 로컬 CLI 실행을 한 작업 흐름으로 묶습니다. 어떤 모델을 쓸지보다 중요한 것은 업무 맥락과 데이터를 누가 통제하느냐입니다.</p>
           <div class="actions">
             <a class="button primary os-download-label" href="https://github.com/ilous12/nn-design-release-feed/releases/latest">OS에 맞는 설치 파일 받기</a>
             <a class="button secondary" href="#usage">활용 방식 보기</a>
           </div>
-          <div class="install-line">설치: 운영체제에 맞는 설치 파일을 받고, 팀에서 허용한 CLI와 키를 연결합니다.</div>
+          <div class="install-line">설치는 운영체제에 맞는 파일을 받으면 끝납니다. 실제 운영은 팀에서 허용한 CLI, 키, 로컬 모델 기준으로 맞춥니다.</div>
 
-          <div class="chat-demo" aria-label="design for air chatbot style preview">
-            <div class="chat-header">
-              <div class="avatar">AI</div>
-              <div>
-                <div class="chat-title">nn.design Assistant</div>
-                <div class="status">Internal workspace ready</div>
-              </div>
-            </div>
-            <div class="chat-body">
-              <div class="message user">
-                <div class="bubble">Build me a Notion-style team dashboard.</div>
-              </div>
-              <div class="message assistant">
-                <div class="avatar">AI</div>
-                <div class="bubble">
-                  사내 디자인 시스템을 기준으로 작업하고, 외부 서비스 하나에 묶지 않고 로컬 CLI를 골라 실행합니다.
-                  <div class="agent-row">
-                    <span class="agent-chip">Codex: code</span>
-                    <span class="agent-chip">Claude Code: UX draft</span>
-                    <span class="agent-chip">Gemini CLI: review</span>
-                    <span class="agent-chip">Local: private context</span>
-                  </div>
-                </div>
-              </div>
-              <div class="message assistant">
-                <div class="avatar" style="opacity:.5">AI</div>
-                <div class="bubble"><div class="typing"><span></span><span></span><span></span></div></div>
-              </div>
-            </div>
-            <div class="composer">
-              <div class="input">Open a project, choose an agent, review the result...</div>
-              <div class="send">→</div>
-            </div>
+          <div class="chat-demo" aria-label="design for air home screen preview">
+            <img class="preview-image" src="./home-preview.png" width="787" height="557" alt="design for air 홈 화면 미리보기" />
           </div>
         </div>
       </section>
@@ -727,39 +702,39 @@
       <section id="features" class="section white-section">
         <div class="container">
           <div class="section-head">
-            <h2>중요한 건 모델보다<br /><span class="gradient-text">플랫폼 비종속과 데이터 통제입니다</span></h2>
-            <p>nn.design은 Claude Design에 업무를 종속시키지 않고, 회사가 허용한 CLI와 모델을 로컬 중심으로 묶어 운영합니다.</p>
+            <h2>외부 플랫폼을 쓰더라도<br /><span class="gradient-text">업무의 기준은 내부에 남겨야 합니다</span></h2>
+            <p>design for air는 Claude Design 하나에 사용량, 모델, 저장 위치를 맡기지 않습니다. 회사가 선택한 실행 경로 안에서 디자인 작업을 이어가도록 돕습니다.</p>
           </div>
           <div class="feature-grid">
             <article class="feature-card">
               <div class="icon-box">01</div>
-              <h3>플랫폼 비종속 운영</h3>
-              <p>특정 플랫폼의 사용량, 모델, 저장 방식에 묶이지 않고 회사 기준으로 실행 경로를 선택합니다.</p>
+              <h3>플랫폼 비종속</h3>
+              <p>특정 서비스의 한도와 정책에 업무 일정을 맞추지 않습니다. 실행 경로는 회사 기준으로 선택합니다.</p>
             </article>
             <article class="feature-card">
               <div class="icon-box">02</div>
-              <h3>로컬 CLI 우선 연결</h3>
-              <p>Codex, Claude Code, Gemini CLI, 로컬 모델을 작업 PC 또는 사내 승인 환경에서 먼저 사용합니다.</p>
+              <h3>로컬 CLI 우선</h3>
+              <p>Codex, Claude Code, Gemini CLI, 로컬 모델을 작업 PC 또는 사내 승인 환경에서 먼저 연결합니다.</p>
             </article>
             <article class="feature-card">
               <div class="icon-box">03</div>
-              <h3>전체 작업 로컬 통제</h3>
-              <p>디자인 파일, 프롬프트, 산출물, 프로젝트 컨텍스트를 로컬 또는 사내 승인 경로에서 관리합니다.</p>
+              <h3>데이터 통제</h3>
+              <p>디자인 파일, 프롬프트, 산출물, 프로젝트 컨텍스트가 어디에 남는지 명확히 관리합니다.</p>
             </article>
             <article class="feature-card">
               <div class="icon-box">04</div>
-              <h3>회사 맞춤 디자인/업무 시스템</h3>
-              <p>Open.design의 범용 시스템을 그대로 쓰지 않고 사내 서비스 UI, 브랜드 톤, 컴포넌트 규칙, 개발팀 산출물 형식에 맞게 정제합니다.</p>
+              <h3>회사 맞춤 시스템</h3>
+              <p>범용 디자인 시스템을 그대로 쓰지 않고 서비스 UI, 브랜드 톤, 컴포넌트 규칙에 맞게 정제합니다.</p>
             </article>
             <article class="feature-card">
               <div class="icon-box">05</div>
-              <h3>결과물 재사용 기준</h3>
-              <p>생성 결과는 검토, 수정, 재사용할 수 있는 형태로 남기고 팀의 품질 기준에 맞춰 관리합니다.</p>
+              <h3>재사용 가능한 결과물</h3>
+              <p>한 번 만든 화면을 대화 기록으로 흘려보내지 않고, 검토와 수정이 가능한 산출물로 남깁니다.</p>
             </article>
             <article class="feature-card">
               <div class="icon-box">₩</div>
-              <h3>정액제와 비용 분산</h3>
-              <p>API 방식만 고집하지 않고 정액제 CLI, BYOK, 사내 키, 로컬 모델을 조합해 비용과 사용량 한도를 분산합니다.</p>
+              <h3>비용 선택권</h3>
+              <p>API 방식만 고집하지 않고 정액제 CLI, BYOK, 사내 키, 로컬 모델을 함께 고려합니다.</p>
             </article>
           </div>
         </div>
@@ -768,29 +743,29 @@
       <section id="usage" class="section">
         <div class="container">
           <div class="section-head">
-            <h2>작업은 로컬에서 시작하고<br /><span class="gradient-text">필요한 도구만 선택합니다</span></h2>
-            <p>초안 생성, 리믹스, 코드 변환, 리뷰를 같은 프로젝트 컨텍스트 안에서 이어가되 API, 정액제 CLI, 로컬 모델 중 팀 정책에 맞는 방식을 선택합니다.</p>
+            <h2>하나의 답을 받는 도구가 아니라<br /><span class="gradient-text">작업을 이어가는 자리입니다</span></h2>
+            <p>초안 작성, 리믹스, 코드 변환, 검토를 같은 프로젝트 맥락에서 이어갑니다. 실행은 API, 정액제 CLI, 로컬 모델 중 팀 정책에 맞게 선택합니다.</p>
           </div>
           <div class="usage-layout">
             <article class="install-card">
               <div class="icon-box">열기</div>
-              <h3>프로젝트 컨텍스트 연결</h3>
-              <p>작업 폴더, 사내 템플릿, 디자인 시스템 기준을 먼저 열어 AI가 회사 맥락 안에서 답하게 만듭니다.</p>
+              <h3>맥락을 먼저 고정</h3>
+              <p>작업 폴더, 사내 템플릿, 디자인 시스템을 먼저 열어 결과가 회사 맥락을 벗어나지 않게 합니다.</p>
             </article>
             <article class="install-card">
               <div class="icon-box">선택</div>
-              <h3>목적에 맞는 CLI 지정</h3>
-              <p><strong>Codex</strong>, <strong>Claude Code</strong>, <strong>Gemini CLI</strong>, 로컬 모델 중 작업 성격과 보안 기준에 맞는 실행 경로를 선택합니다.</p>
+              <h3>도구는 목적별로 선택</h3>
+              <p><strong>Codex</strong>, <strong>Claude Code</strong>, <strong>Gemini CLI</strong>, 로컬 모델 중 작업 성격과 보안 기준에 맞게 고릅니다.</p>
             </article>
             <article class="install-card">
               <div class="icon-box">리믹스</div>
-              <h3>결과를 업무 형식으로 재구성</h3>
-              <p>관리자 화면, 모바일 우선, AIR 톤, 개발 전달용 스펙처럼 같은 요구를 여러 산출물 형태로 다시 만듭니다.</p>
+              <h3>업무 형식으로 리믹스</h3>
+              <p>관리자 화면, 모바일 우선, 서비스 톤, 개발 전달용 스펙처럼 같은 요구를 다른 산출물로 바꿉니다.</p>
             </article>
             <article class="install-card">
               <div class="icon-box">검토</div>
-              <h3>결과를 내부 기준으로 확인</h3>
-              <p>생성물은 그대로 끝내지 않고 검토, 수정, 재사용 가능한 형태로 정리합니다.</p>
+              <h3>검토 후 남기는 방식</h3>
+              <p>생성물은 그대로 끝내지 않고 팀 기준에 맞게 다듬어 다음 작업에 다시 씁니다.</p>
             </article>
           </div>
         </div>
@@ -799,17 +774,17 @@
       <section id="install" class="section white-section">
         <div class="container">
           <div class="section-head">
-            <h2>설치는 가볍게,<br /><span class="gradient-text">실행은 로컬 기준으로</span></h2>
-            <p>macOS와 Windows 모두 같은 활용 흐름을 기준으로 안내하고, 설치 후에는 팀에서 허용한 CLI와 키 관리 방식을 설정합니다.</p>
+            <h2>설치는 짧고,<br /><span class="gradient-text">운영 기준은 분명하게</span></h2>
+            <p>macOS와 Windows 모두 같은 흐름으로 안내합니다. 설치 후에는 팀에서 허용한 CLI와 키 관리 방식을 맞추면 됩니다.</p>
           </div>
-          <div class="install-line">설치: 최신 릴리스에서 현재 운영체제에 맞는 설치 파일을 받아 실행하세요.</div>
+          <div class="install-line">최신 릴리스에서 현재 운영체제에 맞는 설치 파일을 받아 실행하세요.</div>
         </div>
       </section>
 
       <section class="section white-section">
         <div class="container">
           <div class="cta-band">
-            <h2>작업 도구는 고르고, 데이터는 내부에 둡니다</h2>
+            <h2>도구는 바뀌어도, 작업 기준은 유지됩니다</h2>
             <p>Codex, Claude Code, Gemini CLI, 로컬 모델을 필요한 만큼 연결하고 결과물은 회사 기준 안에서 관리합니다.</p>
             <a class="button os-download-label" href="https://github.com/ilous12/nn-design-release-feed/releases/latest">OS에 맞는 설치 파일 받기</a>
           </div>
