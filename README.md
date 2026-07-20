@@ -36,4 +36,3 @@ stable/
       metadata.json
       platforms/
 ```
-
