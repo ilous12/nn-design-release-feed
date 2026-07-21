@@ -1,0 +1,54 @@
+{
+  "arch": "x64",
+  "artifacts": {
+    "installer": {
+      "contentType": "application/vnd.microsoft.portable-executable",
+      "name": "design-for-air-0.12.9-win-x64-setup.exe",
+      "size": 205289456,
+      "url": "https://github.com/ilous12/nn-design-release-feed/releases/download/v0.12.9/design-for-air-0.12.9-win-x64-setup.exe",
+      "sha256Url": "https://github.com/ilous12/nn-design-release-feed/releases/download/v0.12.9/design-for-air-0.12.9-win-x64-setup.exe.sha256"
+    },
+    "payload": {
+      "contentType": "application/octet-stream",
+      "name": "design-for-air-0.12.9-win-x64-payload.7z",
+      "size": 190534222,
+      "url": "https://github.com/ilous12/nn-design-release-feed/releases/download/v0.12.9/design-for-air-0.12.9-win-x64-payload.7z",
+      "sha256Url": "https://github.com/ilous12/nn-design-release-feed/releases/download/v0.12.9/design-for-air-0.12.9-win-x64-payload.7z.sha256"
+    }
+  },
+  "channel": "stable",
+  "enabled": true,
+  "feed": {
+    "latestUrl": "https://ilous12.github.io/nn-design-release-feed/stable/latest/latest.yml",
+    "name": "latest.yml",
+    "url": "https://ilous12.github.io/nn-design-release-feed/stable/versions/0.12.9/latest.yml"
+  },
+  "generatedAt": "2026-07-21T00:06:41.104Z",
+  "github": {
+    "branch": "",
+    "commit": "",
+    "repository": "",
+    "runAttempt": 0,
+    "runId": 0,
+    "workflow": ""
+  },
+  "dryRun": true,
+  "dryRunMode": "",
+  "label": "Windows x64",
+  "legacyPlatformKey": "win",
+  "platform": "win",
+  "platformKey": "win_x64",
+  "releaseTarget": "win_x64",
+  "report": null,
+  "r2": {
+    "latestManifestUrl": "https://ilous12.github.io/nn-design-release-feed/stable/latest/platforms/win_x64.json",
+    "latestPrefix": "stable/latest",
+    "publicOrigin": "https://ilous12.github.io/nn-design-release-feed",
+    "versionManifestUrl": "https://ilous12.github.io/nn-design-release-feed/stable/versions/0.12.9/platforms/win_x64.json",
+    "versionPrefix": "stable/versions/0.12.9"
+  },
+  "releaseVersion": "0.12.9",
+  "signed": true,
+  "status": "published",
+  "version": 1
+}

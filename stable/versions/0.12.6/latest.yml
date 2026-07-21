@@ -1,0 +1,9 @@
+﻿version: "0.12.6"
+files:
+  - url: "https://github.com/ilous12/nn-design-release-feed/releases/download/v0.12.6/design-for-air-0.12.6-win-x64-setup.exe"
+    sha512: "0PbUI/FXSD/31oM+5c+9p7aORuOswYsO6NQagmqGz4kynG++2DtaTVY0/19Vhs8tWt5gQ+yFmreWVQ5OoZIm0A=="
+    size: 205264200
+path: "https://github.com/ilous12/nn-design-release-feed/releases/download/v0.12.6/design-for-air-0.12.6-win-x64-setup.exe"
+sha512: "0PbUI/FXSD/31oM+5c+9p7aORuOswYsO6NQagmqGz4kynG++2DtaTVY0/19Vhs8tWt5gQ+yFmreWVQ5OoZIm0A=="
+releaseDate: "2026-07-20T01:56:08Z"
+releaseNotes: "design for air 0.12.6"
